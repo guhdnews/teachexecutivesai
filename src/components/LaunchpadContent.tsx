@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth, useUser } from "@/contexts";
 import {
     CheckCircle,
@@ -102,10 +103,14 @@ export function LaunchpadContent() {
             {/* Header */}
             <header className="bg-white border-b sticky top-0 z-50">
                 <div className="container flex items-center justify-between py-4">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 bg-navy-800 rounded-lg flex items-center justify-center">
-                            <span className="text-gold-500 font-bold text-xl">A</span>
-                        </div>
+                    <Link href="/" className="flex items-center gap-3">
+                        <Image
+                            src="/images/icon-192.png"
+                            alt="AI Courses for Adults"
+                            width={44}
+                            height={44}
+                            className="w-11 h-11"
+                        />
                         <span className="text-navy-800 font-semibold text-lg hidden sm:block">
                             AI Courses for Adults
                         </span>
@@ -122,16 +127,16 @@ export function LaunchpadContent() {
                     <div className="max-w-3xl mx-auto text-center">
                         <div className="inline-flex items-center gap-2 bg-gold-500/20 text-gold-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
                             <Briefcase className="w-4 h-4" />
-                            Ultimate Business Bundle
+                            Advanced Optional Upgrade
                         </div>
                         <h1 className="text-display-lg mb-6">
-                            Master AI &amp;
+                            Ready to Monetize Your AI Skills?
                             <span className="text-gold-400"> Start Your Own Business</span>
                         </h1>
                         <p className="text-body-lg text-navy-200 mb-8">
-                            Everything in AI Essentials, plus powerful AI tools and a complete
-                            system to help you turn your experience into a profitable consulting
-                            side-business — even if you&apos;ve never done it before.
+                            For those who&apos;ve mastered the AI Essentials and want to go further —
+                            this program teaches you how to turn your decades of experience into
+                            a profitable AI consulting side-business.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <span className="text-4xl font-bold">$497</span>
@@ -140,6 +145,9 @@ export function LaunchpadContent() {
                                 Save $200
                             </span>
                         </div>
+                        <p className="text-sm text-navy-300 mt-4">
+                            Includes everything in AI Essentials ($197 value)
+                        </p>
                     </div>
                 </div>
             </section>

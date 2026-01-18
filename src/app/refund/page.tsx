@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,10 +14,14 @@ export default function RefundPage() {
             {/* Header */}
             <header className="bg-white border-b sticky top-0 z-50">
                 <div className="container flex items-center justify-between py-4">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 bg-navy-800 rounded-lg flex items-center justify-center">
-                            <span className="text-gold-500 font-bold text-xl">A</span>
-                        </div>
+                    <Link href="/" className="flex items-center gap-3">
+                        <Image
+                            src="/images/icon-192.png"
+                            alt="AI Courses for Adults"
+                            width={44}
+                            height={44}
+                            className="w-11 h-11"
+                        />
                         <span className="text-navy-800 font-semibold text-lg">
                             AI Courses for Adults
                         </span>
