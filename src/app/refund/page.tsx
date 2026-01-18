@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
-    title: "Refund Policy",
-    description: "Refund Policy for AI Courses for Adults",
+export const metadata: Metadata = {
+    title: "30-Day Money-Back Guarantee | Refund Policy",
+    description: "We offer a 30-day money-back guarantee on all AI courses. Not satisfied? Get a full refund — no questions asked.",
+    robots: { index: true, follow: true },
 };
 
 export default function RefundPage() {

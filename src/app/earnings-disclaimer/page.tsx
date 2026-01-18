@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "Earnings Disclaimer",
-    description: "Earnings Disclaimer for AI Courses for Adults",
+    description: "Important information about income claims and testimonials on AI Courses for Adults. Individual results vary based on effort, experience, and market conditions.",
+    robots: { index: true, follow: true },
 };
 
 export default function EarningsDisclaimerPage() {

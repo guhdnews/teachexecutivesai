@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "Privacy Policy",
-    description: "Privacy Policy for AI Courses for Adults",
+    description: "Privacy Policy for AI Courses for Adults. Learn how we collect, use, and protect your personal information.",
+    robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {

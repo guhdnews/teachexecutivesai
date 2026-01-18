@@ -1,8 +1,24 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
-    title: "Blog | AI Courses for Adults",
-    description: "Tips, guides, and insights on using AI in your personal and professional life.",
+export const metadata: Metadata = {
+    title: "AI Blog for Adults 55+ | Tips, Guides & Insights",
+    description:
+        "Practical AI tips for adults over 55. Learn about ChatGPT, AI safety, starting a business, and how to use AI in everyday life.",
+    keywords: [
+        "AI blog for seniors",
+        "ChatGPT tips",
+        "AI safety seniors",
+        "AI for older adults",
+        "AI learning blog",
+        "technology for seniors",
+    ],
+    openGraph: {
+        title: "The AI Learning Blog",
+        description:
+            "Practical tips, guides, and insights to help adults navigate the AI revolution with confidence.",
+        type: "website",
+    },
 };
 
 // Blog posts data - in production, this would come from a CMS or Firestore

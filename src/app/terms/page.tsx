@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "Terms of Service",
-    description: "Terms of Service for AI Courses for Adults",
+    description: "Terms of Service for AI Courses for Adults. Learn about account usage, payment terms, refund policy, and intellectual property.",
+    robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {

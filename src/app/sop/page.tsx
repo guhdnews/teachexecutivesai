@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import {
     CheckCircle,
     FileText,
@@ -8,9 +9,24 @@ import {
 import { PurchaseButton, UserLink } from "@/components/PurchaseButton";
 import { SOPOrderBump } from "@/components/SOPOrderBump";
 
-export const metadata = {
-    title: "AI SOPs & Prompt Templates | AI Courses for Adults",
-    description: "10 ready-to-use AI prompts and templates to start using AI productively today.",
+export const metadata: Metadata = {
+    title: "AI SOPs & Prompt Templates ($37) | AI Courses for Adults",
+    description:
+        "10 ready-to-use AI prompts and templates. Copy-paste prompts for emails, meetings, research, and content — start being productive with AI today.",
+    keywords: [
+        "AI prompts",
+        "ChatGPT prompts",
+        "AI templates",
+        "copy paste prompts",
+        "AI for business",
+        "productivity prompts",
+    ],
+    openGraph: {
+        title: "AI SOPs & Prompt Templates - Ready to Use",
+        description:
+            "10 ready-to-use AI prompts and templates. No learning curve — just copy, paste, and start being productive. $37.",
+        type: "website",
+    },
 };
 
 const sopContents = [
