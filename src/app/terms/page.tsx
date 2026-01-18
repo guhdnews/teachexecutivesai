@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
     title: "Terms of Service",
-    description: "Terms of Service for AI for Boomers",
+    description: "Terms of Service for AI Courses for Adults",
 };
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
                             <span className="text-gold-500 font-bold text-xl">A</span>
                         </div>
                         <span className="text-navy-800 font-semibold text-lg">
-                            AI for Boomers
+                            AI Courses for Adults
                         </span>
                     </Link>
                 </div>
@@ -30,14 +30,14 @@ export default function TermsPage() {
 
                     <h2>1. Acceptance of Terms</h2>
                     <p>
-                        By accessing and using AI for Boomers (&quot;the Service&quot;), you agree to be
+                        By accessing and using AI Courses for Adults (&quot;the Service&quot;), you agree to be
                         bound by these Terms of Service. If you do not agree to these terms,
                         please do not use the Service.
                     </p>
 
                     <h2>2. Description of Service</h2>
                     <p>
-                        AI for Boomers provides online educational content and AI-powered tools
+                        AI Courses for Adults provides online educational content and AI-powered tools
                         designed to help adults learn about and use artificial intelligence
                         technology. The Service includes:
                     </p>
@@ -71,7 +71,7 @@ export default function TermsPage() {
                     <h2>6. Intellectual Property</h2>
                     <p>
                         All content on the Service, including text, graphics, logos, videos, and
-                        software, is the property of AI for Boomers and is protected by
+                        software, is the property of AI Courses for Adults and is protected by
                         intellectual property laws. You may not reproduce, distribute, or create
                         derivative works without our written permission.
                     </p>
@@ -109,7 +109,7 @@ export default function TermsPage() {
                     <h2>11. Contact Us</h2>
                     <p>
                         If you have questions about these Terms of Service, please contact us
-                        at support@aiforboomers.com.
+                        at support@aicoursesforadults.com.
                     </p>
                 </div>
             </main>
@@ -118,7 +118,7 @@ export default function TermsPage() {
             <footer className="bg-navy-900 text-white py-8">
                 <div className="container text-center">
                     <p className="text-navy-400 text-sm">
-                        © {new Date().getFullYear()} AI for Boomers. All rights reserved.
+                        © {new Date().getFullYear()} AI Courses for Adults. All rights reserved.
                     </p>
                     <div className="flex justify-center gap-6 mt-4 text-sm text-navy-400">
                         <Link href="/terms" className="hover:text-white">Terms</Link>

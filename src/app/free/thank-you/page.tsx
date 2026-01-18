@@ -3,7 +3,7 @@ import { FreeThankYouContent } from "@/components/FreeThankYouContent";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-    title: "Check Your Email | AI for Boomers",
+    title: "Check Your Email | AI Courses for Adults",
     description: "Your AI Quickstart training is on its way!",
 };
 

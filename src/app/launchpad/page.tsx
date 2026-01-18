@@ -3,7 +3,7 @@ import { LaunchpadContent } from "@/components/LaunchpadContent";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-    title: "Ultimate Business Bundle - Master AI & Start Your Own Business | AI for Boomers",
+    title: "Ultimate Business Bundle - Master AI & Start Your Own Business | AI Courses for Adults",
     description: "Everything in AI Essentials plus powerful AI tools to help you turn your experience into a profitable consulting side-business.",
     keywords: [
         "AI for seniors",

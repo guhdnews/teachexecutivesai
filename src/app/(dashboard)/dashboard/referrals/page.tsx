@@ -3,7 +3,7 @@ import { ReferralsContent } from "@/components/ReferralsContent";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-    title: "Referral Program | AI for Boomers",
+    title: "Referral Program | AI Courses for Adults",
     description: "Earn 20% commission on every sale from people you refer.",
 };
 

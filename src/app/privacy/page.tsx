@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
     title: "Privacy Policy",
-    description: "Privacy Policy for AI for Boomers",
+    description: "Privacy Policy for AI Courses for Adults",
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
                             <span className="text-gold-500 font-bold text-xl">A</span>
                         </div>
                         <span className="text-navy-800 font-semibold text-lg">
-                            AI for Boomers
+                            AI Courses for Adults
                         </span>
                     </Link>
                 </div>
@@ -125,7 +125,7 @@ export default function PrivacyPage() {
                     <h2>11. Contact Us</h2>
                     <p>
                         If you have questions about this Privacy Policy, please contact us
-                        at privacy@aiforboomers.com.
+                        at privacy@aicoursesforadults.com.
                     </p>
                 </div>
             </main>
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
             <footer className="bg-navy-900 text-white py-8">
                 <div className="container text-center">
                     <p className="text-navy-400 text-sm">
-                        © {new Date().getFullYear()} AI for Boomers. All rights reserved.
+                        © {new Date().getFullYear()} AI Courses for Adults. All rights reserved.
                     </p>
                     <div className="flex justify-center gap-6 mt-4 text-sm text-navy-400">
                         <Link href="/terms" className="hover:text-white">Terms</Link>

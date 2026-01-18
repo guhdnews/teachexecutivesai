@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
     title: "Refund Policy",
-    description: "Refund Policy for AI for Boomers",
+    description: "Refund Policy for AI Courses for Adults",
 };
 
 export default function RefundPage() {
@@ -16,7 +16,7 @@ export default function RefundPage() {
                             <span className="text-gold-500 font-bold text-xl">A</span>
                         </div>
                         <span className="text-navy-800 font-semibold text-lg">
-                            AI for Boomers
+                            AI Courses for Adults
                         </span>
                     </Link>
                 </div>
@@ -41,7 +41,7 @@ export default function RefundPage() {
                     <h2>How to Request a Refund</h2>
                     <ol>
                         <li>
-                            <strong>Email us</strong> at support@aiforboomers.com with your
+                            <strong>Email us</strong> at support@aicoursesforadults.com with your
                             account email and purchase date
                         </li>
                         <li>
@@ -108,7 +108,7 @@ export default function RefundPage() {
                     <h2>Questions?</h2>
                     <p>
                         If you have any questions about our refund policy, please email us
-                        at support@aiforboomers.com. We&apos;re here to help!
+                        at support@aicoursesforadults.com. We&apos;re here to help!
                     </p>
 
                     <div className="bg-navy-50 rounded-lg p-6 not-prose mt-8">
@@ -130,7 +130,7 @@ export default function RefundPage() {
             <footer className="bg-navy-900 text-white py-8">
                 <div className="container text-center">
                     <p className="text-navy-400 text-sm">
-                        © {new Date().getFullYear()} AI for Boomers. All rights reserved.
+                        © {new Date().getFullYear()} AI Courses for Adults. All rights reserved.
                     </p>
                     <div className="flex justify-center gap-6 mt-4 text-sm text-navy-400">
                         <Link href="/terms" className="hover:text-white">Terms</Link>

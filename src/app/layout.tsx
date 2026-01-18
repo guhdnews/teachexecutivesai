@@ -19,37 +19,38 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "AI for Boomers - Learn AI at Your Own Pace",
-    template: "%s | AI for Boomers",
+    default: "AI Courses for Adults - Learn AI at Your Own Pace",
+    template: "%s | AI Courses for Adults",
   },
   description:
-    "AI training designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and embrace technology — all at your own pace. No tech jargon, just clear guidance.",
+    "AI training designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and even start your own AI consulting business — all at your own pace.",
   keywords: [
+    "AI courses for adults",
     "AI for seniors",
     "AI for older adults",
     "learn AI",
     "ChatGPT for beginners",
     "AI training",
-    "boomer AI course",
+    "AI consulting business",
     "senior technology training",
     "AI for retirees",
     "digital literacy seniors",
     "AI safety for seniors",
   ],
-  authors: [{ name: "AI for Boomers" }],
-  creator: "AI for Boomers",
+  authors: [{ name: "AI Courses for Adults" }],
+  creator: "AI Courses for Adults",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aiforboomers.com",
-    siteName: "AI for Boomers",
-    title: "AI for Boomers - Learn AI at Your Own Pace",
+    url: "https://aicoursesforadults.com",
+    siteName: "AI Courses for Adults",
+    title: "AI Courses for Adults - Learn AI at Your Own Pace",
     description:
-      "AI training designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and embrace technology — all at your own pace.",
+      "AI training designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and start your own AI consulting business.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Boomers - Learn AI at Your Own Pace",
+    title: "AI Courses for Adults - Learn AI at Your Own Pace",
     description:
       "AI training designed for adults 55+. No tech jargon, just clear guidance.",
   },

@@ -14,7 +14,7 @@ export function FreeThankYouContent() {
                             <span className="text-gold-500 font-bold text-xl">A</span>
                         </div>
                         <span className="text-navy-800 font-semibold text-lg">
-                            AI for Boomers
+                            AI Courses for Adults
                         </span>
                     </Link>
                 </div>
@@ -47,7 +47,7 @@ export function FreeThankYouContent() {
                                 <div>
                                     <h3 className="font-semibold text-navy-800">Check your inbox</h3>
                                     <p className="text-navy-600 text-sm">
-                                        Look for an email from AI for Boomers with the subject
+                                        Look for an email from AI Courses for Adults with the subject
                                         &ldquo;Your AI Quickstart is ready!&rdquo;
                                     </p>
                                 </div>
@@ -97,7 +97,7 @@ export function FreeThankYouContent() {
                     {/* Spam folder note */}
                     <p className="text-sm text-navy-500 mt-8">
                         Can&apos;t find the email? Check your spam or promotions folder.
-                        Add hello@aiforboomers.com to your contacts to make sure you
+                        Add hello@aicoursesforadults.com to your contacts to make sure you
                         receive future emails.
                     </p>
                 </div>

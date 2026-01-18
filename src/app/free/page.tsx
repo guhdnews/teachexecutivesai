@@ -4,7 +4,7 @@ import { FreeContent } from "@/components/FreeContent";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-    title: "Free AI Quickstart | AI for Boomers",
+    title: "Free AI Quickstart | AI Courses for Adults",
     description: "Your first AI conversation in 5 minutes. Free training for adults 55+ who want to learn ChatGPT.",
 };
 

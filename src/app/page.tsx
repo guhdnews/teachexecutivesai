@@ -23,7 +23,7 @@ export default function HomePage() {
               <span className="text-gold-500 font-bold text-xl">A</span>
             </div>
             <span className="text-navy-800 font-semibold text-lg hidden sm:block">
-              AI for Boomers
+              AI Courses for Adults
             </span>
           </Link>
 
@@ -303,7 +303,7 @@ export default function HomePage() {
                 <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
                   <span className="text-navy-900 font-bold text-xl">A</span>
                 </div>
-                <span className="font-semibold">AI for Boomers</span>
+                <span className="font-semibold">AI Courses for Adults</span>
               </div>
               <p className="text-navy-300 text-sm">
                 Making AI accessible for adults 55 and older.
@@ -339,7 +339,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-navy-700 mt-8 pt-8 text-center text-navy-400 text-sm">
-            © {new Date().getFullYear()} AI for Boomers. All rights reserved.
+            © {new Date().getFullYear()} AI Courses for Adults. All rights reserved.
           </div>
         </div>
       </footer>

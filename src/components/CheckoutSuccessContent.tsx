@@ -31,7 +31,7 @@ export function CheckoutSuccessContent() {
 
                 <p className="mt-6 text-sm text-navy-500">
                     Need help?{" "}
-                    <Link href="mailto:support@aiforboomers.com" className="text-gold-600 hover:text-gold-700">
+                    <Link href="mailto:support@aicoursesforadults.com" className="text-gold-600 hover:text-gold-700">
                         Contact Support
                     </Link>
                 </p>

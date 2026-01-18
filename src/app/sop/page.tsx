@@ -9,7 +9,7 @@ import { PurchaseButton, UserLink } from "@/components/PurchaseButton";
 import { SOPOrderBump } from "@/components/SOPOrderBump";
 
 export const metadata = {
-    title: "AI SOPs & Prompt Templates | AI for Boomers",
+    title: "AI SOPs & Prompt Templates | AI Courses for Adults",
     description: "10 ready-to-use AI prompts and templates to start using AI productively today.",
 };
 
@@ -32,7 +32,7 @@ export default function SOPPage() {
                             <span className="text-gold-500 font-bold text-xl">A</span>
                         </div>
                         <span className="text-navy-800 font-semibold text-lg hidden sm:block">
-                            AI for Boomers
+                            AI Courses for Adults
                         </span>
                     </Link>
                     <UserLink loginHref="/login" />
@@ -106,7 +106,7 @@ export default function SOPPage() {
             <footer className="bg-navy-900 text-white py-8">
                 <div className="container text-center">
                     <p className="text-navy-400 text-sm">
-                        © {new Date().getFullYear()} AI for Boomers. All rights reserved.
+                        © {new Date().getFullYear()} AI Courses for Adults. All rights reserved.
                     </p>
                 </div>
             </footer>

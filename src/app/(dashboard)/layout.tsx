@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                         <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
                             <span className="text-navy-900 font-bold text-xl">A</span>
                         </div>
-                        <span className="font-semibold text-lg">AI for Boomers</span>
+                        <span className="font-semibold text-lg">AI Courses for Adults</span>
                     </Link>
                 </div>
 
