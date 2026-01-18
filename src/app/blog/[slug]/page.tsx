@@ -141,6 +141,160 @@ AI introduces new risks around data privacy, bias, and misinformation. Leadershi
 [Get started with our Executive AI Quickstart →](/free)
         `,
     },
+    "chatgpt-medical-questions-safe": {
+        title: "Can You Use ChatGPT for Medical Questions? Here's What's Safe",
+        category: "Safety",
+        date: "January 18, 2026",
+        readTime: "7 min read",
+        content: `
+## Using AI for Health Information—Safely
+
+ChatGPT and other AI tools can be helpful for understanding health topics, but it's critical to know the boundaries.
+
+### What AI Can Help With
+
+#### Safe Uses:
+- **Understanding medical terms** - "What does 'benign' mean?"
+- **General health education** - "How does blood pressure work?"
+- **Preparation for doctor visits** - "What questions should I ask about my cholesterol?"
+- **Medication research** - "What are common side effects of this drug?"
+- **Lifestyle guidance** - "What foods help reduce inflammation?"
+
+### What AI Should NEVER Replace
+
+#### Never Use AI For:
+- **Diagnosis** - AI cannot examine you or run tests
+- **Emergency decisions** - Always call 911 for emergencies
+- **Medication changes** - Never adjust doses without a doctor
+- **Interpreting test results** - Context matters too much
+- **Mental health crises** - Call a helpline or see a professional
+
+### The Right Approach
+
+1. Use AI to learn and prepare questions
+2. Discuss everything with your actual doctor
+3. Verify important information with trusted medical sources
+4. Never skip professional care based on AI advice
+
+### A Good Prompt Example
+
+"Help me understand what questions I should ask my doctor about my recent blood pressure reading of 140/90."
+
+This uses AI to prepare—not replace—the doctor visit.
+
+[Learn more about using AI safely →](/free)
+        `,
+    },
+    "teach-grandchildren-ai-tips": {
+        title: "What Your Grandchildren Can Teach You About AI (And Vice Versa)",
+        category: "Lifestyle",
+        date: "January 16, 2026",
+        readTime: "5 min read",
+        content: `
+## Learning AI as a Family
+
+Some of the best AI learning happens across generations. Your grandchildren can show you the tools, and you can teach them the wisdom to use them well.
+
+### What Kids Know That You Can Learn
+
+#### From Them:
+- **Fearlessness** - They'll try anything without worrying about mistakes
+- **New features** - They often know the latest updates
+- **Mobile skills** - They're natural with phones and tablets
+- **Voice commands** - "Hey Siri" is second nature
+
+### What You Know That They Need
+
+#### From You:
+- **Critical thinking** - Is this information trustworthy?
+- **Privacy awareness** - What shouldn't be shared online?
+- **Real-world context** - How does this apply to actual life?
+- **Patience** - Good things take time, even with AI
+
+### Fun Activities to Try Together
+
+1. **Recipe helper** - Ask AI to help plan a family dinner
+2. **Story time** - Create a story together with AI assistance
+3. **Photo projects** - Organize family photos using AI tools
+4. **Trivia night** - Have AI generate questions about family history
+
+### The Best Part
+
+You'll both learn something, and you'll get quality time together. Technology becomes a bridge, not a barrier.
+
+### A Conversation Starter
+
+Ask your grandchild: "Can you show me what you use ChatGPT for?" Then share something you'd like to learn.
+
+[Get started with AI basics →](/free)
+        `,
+    },
+    "first-ai-consulting-client": {
+        title: "How to Get Your First AI Consulting Client in 30 Days",
+        category: "Business",
+        date: "January 12, 2026",
+        readTime: "12 min read",
+        content: `
+## Your 30-Day Plan to Your First Paying Client
+
+You have decades of experience. Now you know AI. Here's exactly how to turn that into your first consulting client.
+
+### Week 1: Define Your Niche
+
+#### Pick Your Sweet Spot
+The intersection of:
+- **Your industry experience** (healthcare, finance, manufacturing, etc.)
+- **A specific AI application** (content, analysis, automation)
+- **A clear problem** (too much admin work, slow processes, knowledge gaps)
+
+#### Example Niches:
+- "I help independent medical practices use AI to handle patient communications"
+- "I help small manufacturing companies use AI for quality documentation"
+- "I help financial advisors use AI to create client newsletters"
+
+### Week 2: Create Your Simple Offer
+
+#### Your First Package:
+- **2-hour consultation** to assess their needs
+- **Simple implementation** of 1-2 AI tools
+- **1 week of email support**
+- **Price: $500-1,500**
+
+Keep it small. You can expand later.
+
+### Week 3: Reach Out to Your Network
+
+#### Who to Contact:
+1. Former colleagues who now run their own practices
+2. LinkedIn connections in your industry
+3. Local business associations
+4. Professional groups you belong to
+
+#### What to Say:
+"I've been learning how AI can help [industry] professionals save time on [specific task]. I'm offering a limited consultation to help a few people get started. Would you be interested in a quick call?"
+
+### Week 4: Have Conversations
+
+#### In Your Calls:
+1. Listen to their challenges (80% of the time)
+2. Share how AI could help (20% of the time)
+3. Offer your simple package
+4. Follow up within 24 hours
+
+### Common Mistakes to Avoid
+
+- **Overcomplicating your offer** - Start simple
+- **Underpricing** - Your experience has value
+- **Targeting everyone** - Be specific
+- **Waiting until you're "ready"** - You're ready now
+
+### The Key Mindset
+
+You're not selling AI. You're selling the result: saved time, reduced stress, better output. AI is just the tool.
+
+[Get the full AI Business Builder program →](/launchpad)
+        `,
+    },
 };
 
 interface PageProps {

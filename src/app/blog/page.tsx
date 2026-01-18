@@ -48,6 +48,30 @@ const blogPosts = [
         category: "Leadership",
     },
     {
+        slug: "chatgpt-medical-questions-safe",
+        title: "Can You Use ChatGPT for Medical Questions? Here's What's Safe",
+        excerpt: "AI can help you understand health topics, but knowing what to ask—and what not to—could save your life.",
+        date: "January 18, 2026",
+        readTime: "7 min read",
+        category: "Safety",
+    },
+    {
+        slug: "teach-grandchildren-ai-tips",
+        title: "What Your Grandchildren Can Teach You About AI (And Vice Versa)",
+        excerpt: "The best AI learning might happen across generations. Here's how to make it a fun family activity.",
+        date: "January 16, 2026",
+        readTime: "5 min read",
+        category: "Lifestyle",
+    },
+    {
+        slug: "first-ai-consulting-client",
+        title: "How to Get Your First AI Consulting Client in 30 Days",
+        excerpt: "A step-by-step guide to landing your first paying client using your industry experience and AI skills.",
+        date: "January 12, 2026",
+        readTime: "12 min read",
+        category: "Business",
+    },
+    {
         slug: "turn-40-years-experience-consulting-business",
         title: "How to Turn 40 Years of Experience Into a Consulting Business",
         excerpt: "Your decades of experience are more valuable than you think. Learn how to package them into a profitable consulting practice.",
@@ -80,6 +104,7 @@ const categoryColors: Record<string, string> = {
     Business: "bg-gold-100 text-gold-700",
     Safety: "bg-red-100 text-red-700",
     Mindset: "bg-navy-100 text-navy-700",
+    Lifestyle: "bg-pink-100 text-pink-700",
 };
 
 export default function BlogPage() {
