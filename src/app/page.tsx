@@ -325,13 +325,13 @@ export default function HomePage() {
           <p className="text-center text-navy-500 text-sm font-medium mb-8 uppercase tracking-wider">
             Featured In
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             {/* Using text logos for simplicity - in production, replace with actual SVG logos */}
-            <span className="text-2xl font-bold text-navy-400">Forbes</span>
-            <span className="text-2xl font-bold text-navy-400">WSJ</span>
-            <span className="text-2xl font-bold text-navy-400">CNN</span>
-            <span className="text-2xl font-bold text-navy-400">AARP</span>
-            <span className="text-2xl font-bold text-navy-400">Inc.</span>
+            <span className="text-2xl font-bold text-navy-600">Forbes</span>
+            <span className="text-2xl font-bold text-navy-600">WSJ</span>
+            <span className="text-2xl font-bold text-navy-600">CNN</span>
+            <span className="text-2xl font-bold text-navy-600">AARP</span>
+            <span className="text-2xl font-bold text-navy-600">Inc.</span>
           </div>
         </div>
       </section>
@@ -525,7 +525,7 @@ function OfferCard({
 
   return (
     <div
-      className={`card relative ${isPopular ? "border-gold-500 border-2 shadow-lg" : ""
+      className={`card relative flex flex-col h-full ${isPopular ? "border-gold-500 border-2 shadow-lg" : ""
         } ${isPremium ? "bg-navy-800 text-white" : ""}`}
     >
       {isPopular && (
@@ -545,11 +545,11 @@ function OfferCard({
       <p className={`text-2xl font-bold mb-4 ${isPremium ? "text-gold-400" : "text-navy-900"}`}>
         {price}
       </p>
-      <ul className="space-y-2 mb-6">
+      <ul className="space-y-2 mb-6 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start gap-2">
             <CheckCircle className={`w-5 h-5 flex-shrink-0 ${isPremium ? "text-gold-400" : "text-green-500"}`} />
-            <span className={isPremium ? "text-navy-200" : "text-navy-600"}>
+            <span className={isPremium ? "text-white" : "text-navy-600"}>
               {feature}
             </span>
           </li>
@@ -557,7 +557,7 @@ function OfferCard({
       </ul>
       <Link
         href={ctaHref}
-        className={`btn w-full ${isPremium
+        className={`btn w-full mt-auto ${isPremium
           ? "bg-gold-500 text-navy-900 hover:bg-gold-400"
           : variant === "free"
             ? "btn-outline"

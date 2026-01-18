@@ -121,7 +121,7 @@ export function CertificationContent() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <span className="text-4xl font-bold">$197</span>
-                            <span className="text-navy-300 line-through">$297</span>
+                            <span className="text-gold-300 line-through">$297</span>
                             <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-semibold">
                                 Save $100
                             </span>
