@@ -7,7 +7,7 @@ const protectedRoutes = ["/dashboard", "/admin"];
 const authRoutes = ["/login", "/signup", "/forgot-password"];
 
 // Routes that are always public
-const publicRoutes = ["/", "/free", "/sop", "/certification", "/launchpad", "/blog", "/terms", "/privacy", "/refund", "/earnings"];
+const publicRoutes = ["/", "/free", "/sop", "/certification", "/launchpad", "/blog", "/terms", "/privacy", "/refund", "/earnings-disclaimer"];
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
