@@ -3,31 +3,51 @@ import { loadStripe, Stripe as StripeClient } from "@stripe/stripe-js";
 
 /**
  * Stripe Configuration
+ * 
+ * Lazy initialization to prevent build-time errors when env vars are missing
  */
 
-// Server-side Stripe instance
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+// Lazy-initialized Stripe instance
+let _stripe: Stripe | null = null;
+
+export function getServerStripe(): Stripe | null {
+    if (!process.env.STRIPE_SECRET_KEY) {
+        console.warn("Stripe: Missing STRIPE_SECRET_KEY");
+        return null;
+    }
+
+    if (!_stripe) {
+        _stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    }
+    return _stripe;
+}
+
+// Legacy export for backwards compatibility - use getServerStripe() instead
+export const stripe = null as Stripe | null;
 
 // Client-side Stripe promise (singleton)
 let stripePromise: Promise<StripeClient | null>;
 
 export function getStripe(): Promise<StripeClient | null> {
     if (!stripePromise) {
-        stripePromise = loadStripe(
-            process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-        );
+        const key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+        if (!key) {
+            console.warn("Stripe: Missing NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY");
+            return Promise.resolve(null);
+        }
+        stripePromise = loadStripe(key);
     }
     return stripePromise;
 }
 
-// Product/Price IDs
+// Product/Price IDs - safely access env vars
 export const STRIPE_PRICES = {
-    SOP: process.env.STRIPE_PRICE_SOP!,
-    BUMP: process.env.STRIPE_PRICE_BUMP!,
-    CAIO: process.env.STRIPE_PRICE_CAIO!,
-    CAIO_PLAN: process.env.STRIPE_PRICE_CAIO_PLAN!,
-    LAUNCHPAD: process.env.STRIPE_PRICE_LAUNCHPAD!,
-    LAUNCHPAD_PLAN: process.env.STRIPE_PRICE_LAUNCHPAD_PLAN!,
+    SOP: process.env.STRIPE_PRICE_SOP || "",
+    BUMP: process.env.STRIPE_PRICE_BUMP || "",
+    CAIO: process.env.STRIPE_PRICE_CAIO || "",
+    CAIO_PLAN: process.env.STRIPE_PRICE_CAIO_PLAN || "",
+    LAUNCHPAD: process.env.STRIPE_PRICE_LAUNCHPAD || "",
+    LAUNCHPAD_PLAN: process.env.STRIPE_PRICE_LAUNCHPAD_PLAN || "",
 } as const;
 
 // Tier mapping
@@ -47,6 +67,11 @@ export async function createCheckoutSession(params: {
     referralCode?: string;
     includeOrderBump?: boolean;
 }) {
+    const stripeClient = getServerStripe();
+    if (!stripeClient) {
+        throw new Error("Stripe is not configured");
+    }
+
     const lineItems = [{ price: params.priceId, quantity: 1 }];
 
     // Add order bump if applicable
@@ -54,7 +79,7 @@ export async function createCheckoutSession(params: {
         lineItems.push({ price: STRIPE_PRICES.BUMP, quantity: 1 });
     }
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await stripeClient.checkout.sessions.create({
         mode: "payment",
         payment_method_types: ["card"],
         line_items: lineItems,
