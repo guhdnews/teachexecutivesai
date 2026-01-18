@@ -21,13 +21,14 @@ import {
     signInWithEmailLink,
     updateProfile,
 } from "firebase/auth";
-import { getClientAuth } from "@/lib/firebase";
+import { getClientAuth, isFirebaseConfigured } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 
 interface AuthContextType {
     user: User | null;
     loading: boolean;
     error: string | null;
+    isConfigured: boolean;
     signIn: (email: string, password: string) => Promise<void>;
     signUp: (email: string, password: string, name: string) => Promise<void>;
     signOut: () => Promise<void>;
@@ -46,7 +47,7 @@ const googleProvider = new GoogleAuthProvider();
 const actionCodeSettings = {
     url: typeof window !== "undefined"
         ? `${window.location.origin}/auth/verify`
-        : process.env.NEXT_PUBLIC_APP_URL + "/auth/verify",
+        : (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000") + "/auth/verify",
     handleCodeInApp: true,
 };
 
@@ -54,27 +55,49 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [isConfigured, setIsConfigured] = useState(false);
     const router = useRouter();
+
+    // Check if Firebase is configured on mount
+    useEffect(() => {
+        setIsConfigured(isFirebaseConfigured());
+    }, []);
 
     // Listen to auth state changes
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(getClientAuth(), (user) => {
+        const auth = getClientAuth();
+        if (!auth) {
+            setLoading(false);
+            return;
+        }
+
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
             setLoading(false);
         });
 
         return () => unsubscribe();
-    }, []);
+    }, [isConfigured]);
 
     // Clear error
     const clearError = () => setError(null);
+
+    // Check if Firebase is ready
+    const ensureAuth = () => {
+        const auth = getClientAuth();
+        if (!auth) {
+            throw new Error("Firebase is not configured. Please add environment variables.");
+        }
+        return auth;
+    };
 
     // Email/Password Sign In
     const signIn = async (email: string, password: string) => {
         try {
             setError(null);
             setLoading(true);
-            await signInWithEmailAndPassword(getClientAuth(), email, password);
+            const auth = ensureAuth();
+            await signInWithEmailAndPassword(auth, email, password);
             router.push("/dashboard");
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
@@ -90,12 +113,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             setError(null);
             setLoading(true);
-            const result = await createUserWithEmailAndPassword(getClientAuth(), email, password);
+            const auth = ensureAuth();
+            const result = await createUserWithEmailAndPassword(auth, email, password);
 
             // Update display name
             await updateProfile(result.user, { displayName: name });
 
-            // Note: Firestore user document will be created via API route
+            // Note: Firestore user document will be created via UserContext
             router.push("/dashboard");
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
@@ -110,7 +134,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const signOut = async () => {
         try {
             setError(null);
-            await firebaseSignOut(getClientAuth());
+            const auth = ensureAuth();
+            await firebaseSignOut(auth);
             router.push("/");
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
@@ -124,7 +149,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             setError(null);
             setLoading(true);
-            await signInWithPopup(getClientAuth(), googleProvider);
+            const auth = ensureAuth();
+            await signInWithPopup(auth, googleProvider);
             router.push("/dashboard");
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
@@ -139,7 +165,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const sendMagicLink = async (email: string) => {
         try {
             setError(null);
-            await sendSignInLinkToEmail(getClientAuth(), email, actionCodeSettings);
+            const auth = ensureAuth();
+            await sendSignInLinkToEmail(auth, email, actionCodeSettings);
             // Store email for verification page
             if (typeof window !== "undefined") {
                 window.localStorage.setItem("emailForSignIn", email);
@@ -156,9 +183,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             setError(null);
             setLoading(true);
+            const auth = ensureAuth();
 
-            if (typeof window !== "undefined" && isSignInWithEmailLink(getClientAuth(), window.location.href)) {
-                await signInWithEmailLink(getClientAuth(), email, window.location.href);
+            if (typeof window !== "undefined" && isSignInWithEmailLink(auth, window.location.href)) {
+                await signInWithEmailLink(auth, email, window.location.href);
                 window.localStorage.removeItem("emailForSignIn");
                 router.push("/dashboard");
             }
@@ -175,7 +203,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const resetPassword = async (email: string) => {
         try {
             setError(null);
-            await sendPasswordResetEmail(getClientAuth(), email);
+            const auth = ensureAuth();
+            await sendPasswordResetEmail(auth, email);
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
             setError(message);
@@ -187,6 +216,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         loading,
         error,
+        isConfigured,
         signIn,
         signUp,
         signOut,
@@ -235,5 +265,11 @@ function getAuthErrorMessage(error: unknown): string {
                 return "Something went wrong. Please try again.";
         }
     }
+
+    // Check for our custom error
+    if (error instanceof Error && error.message.includes("not configured")) {
+        return "Authentication is not configured. Please contact support.";
+    }
+
     return "Something went wrong. Please try again.";
 }

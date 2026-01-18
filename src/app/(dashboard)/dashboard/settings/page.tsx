@@ -60,6 +60,12 @@ export default function SettingsPage() {
     const onUpdateProfile = async (data: ProfileFormData) => {
         if (!user) return;
 
+        const db = getClientDb();
+        if (!db) {
+            toast.error("Firebase is not configured.");
+            return;
+        }
+
         try {
             setIsUpdatingProfile(true);
 
@@ -67,7 +73,7 @@ export default function SettingsPage() {
             await updateProfile(user, { displayName: data.name });
 
             // Update Firestore
-            const userRef = doc(getClientDb(), "users", user.uid);
+            const userRef = doc(db, "users", user.uid);
             await updateDoc(userRef, { name: data.name });
 
             await refreshProfile();
@@ -117,17 +123,23 @@ export default function SettingsPage() {
     const handleDeleteAccount = async () => {
         if (!user) return;
 
+        const db = getClientDb();
+        const auth = getClientAuth();
+        if (!db || !auth) {
+            toast.error("Firebase is not configured.");
+            return;
+        }
+
         try {
             setIsDeletingAccount(true);
 
             // Soft delete - just mark as deleted
-            const userRef = doc(getClientDb(), "users", user.uid);
+            const userRef = doc(db, "users", user.uid);
             await updateDoc(userRef, {
                 deletedAt: serverTimestamp(),
             });
 
             // Sign out
-            const auth = getClientAuth();
             await auth.signOut();
 
             toast.success("Your account has been deleted. You have 30 days to recover it.");
@@ -160,8 +172,8 @@ export default function SettingsPage() {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${activeTab === tab.id
-                                        ? "bg-navy-800 text-white"
-                                        : "text-navy-600 hover:bg-navy-100"
+                                    ? "bg-navy-800 text-white"
+                                    : "text-navy-600 hover:bg-navy-100"
                                     }`}
                             >
                                 <tab.icon className="w-5 h-5" />

@@ -8,7 +8,7 @@ import {
     ReactNode,
 } from "react";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
-import { getClientDb } from "@/lib/firebase";
+import { getClientDb, isFirebaseConfigured } from "@/lib/firebase";
 import { useAuth } from "./AuthContext";
 import { UserProfile, UserTier } from "@/types";
 import { nanoid } from "nanoid";
@@ -33,7 +33,7 @@ const TIER_LEVELS: Record<UserTier, number> = {
 };
 
 export function UserProvider({ children }: { children: ReactNode }) {
-    const { user } = useAuth();
+    const { user, isConfigured } = useAuth();
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -45,10 +45,22 @@ export function UserProvider({ children }: { children: ReactNode }) {
             return;
         }
 
+        // Don't try to access Firestore if not configured
+        if (!isConfigured) {
+            setLoading(false);
+            return;
+        }
+
         const fetchOrCreateProfile = async () => {
+            const db = getClientDb();
+            if (!db) {
+                setLoading(false);
+                return;
+            }
+
             try {
                 setLoading(true);
-                const userRef = doc(getClientDb(), "users", user.uid);
+                const userRef = doc(db, "users", user.uid);
                 const userSnap = await getDoc(userRef);
 
                 if (userSnap.exists()) {
@@ -107,14 +119,17 @@ export function UserProvider({ children }: { children: ReactNode }) {
         };
 
         fetchOrCreateProfile();
-    }, [user]);
+    }, [user, isConfigured]);
 
     // Refresh profile from Firestore
     const refreshProfile = async () => {
         if (!user) return;
 
+        const db = getClientDb();
+        if (!db) return;
+
         try {
-            const userRef = doc(getClientDb(), "users", user.uid);
+            const userRef = doc(db, "users", user.uid);
             const userSnap = await getDoc(userRef);
 
             if (userSnap.exists()) {
@@ -143,7 +158,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     };
 
     // Check if user has access to AI tools (launchpad only)
-    const hasTool = (tool: "niche" | "authority" | "dealmaker"): boolean => {
+    const hasTool = (): boolean => {
         // All three tools require launchpad tier
         return hasAccess("launchpad");
     };
