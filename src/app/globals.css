@@ -58,6 +58,7 @@
   --shadow-lg: 0 10px 15px rgba(16, 42, 67, 0.1);
   --shadow-xl: 0 20px 25px rgba(16, 42, 67, 0.15);
   --shadow-glow: 0 0 40px rgba(212, 168, 85, 0.3);
+  --shadow-gold: 0 4px 20px rgba(212, 168, 85, 0.25);
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -76,6 +77,7 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-2xl: 24px;
   --radius-full: 9999px;
 
   /* Touch Target (WCAG 2.5.5 AAA) */
@@ -334,15 +336,21 @@ body {
    Animations
    -------------------------------------------------------------------------- */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -350,8 +358,15 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .animate-fade-in {
@@ -370,6 +385,7 @@ body {
    Reduced Motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -415,4 +431,188 @@ body {
     padding-top: var(--space-10);
     padding-bottom: var(--space-10);
   }
+}
+
+/* --------------------------------------------------------------------------
+   Premium Effects (Human Touch)
+   -------------------------------------------------------------------------- */
+
+/* Subtle noise texture overlay for gradients */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(16, 42, 67, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium gradient backgrounds */
+.gradient-warm {
+  background: linear-gradient(135deg, #fef6e7 0%, #fff 50%, #f0f4f8 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #102a43 0%, #1e3a5f 50%, #243b53 100%);
+  position: relative;
+}
+
+/* Subtle pattern for visual interest */
+.pattern-dots {
+  background-image: radial-gradient(circle, var(--navy-200) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Enhanced card with subtle gradient border */
+.card-premium {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Feature highlight card */
+.card-feature {
+  background: linear-gradient(135deg, var(--gold-50) 0%, white 100%);
+  border: 2px solid var(--gold-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+/* Trust badge styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--navy-100);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--navy-700);
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, var(--gold-100) 0%, var(--gold-200) 100%);
+  color: var(--gold-700);
+  border: 1px solid var(--gold-300);
+}
+
+/* Quote/testimonial styling */
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  line-height: 0;
+  color: var(--gold-400);
+  opacity: 0.5;
+}
+
+/* Handwritten-style accent */
+.handwritten {
+  font-family: "Caveat", cursive, system-ui;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+/* Divider with gold accent */
+.divider-gold {
+  height: 4px;
+  width: 60px;
+  background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+  border-radius: var(--radius-full);
+}
+
+/* Logo animation on hover */
+.logo-hover {
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.logo-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Staggered animation delays for lists */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+/* Text gradient effect */
+.text-gradient {
+  background: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth underline on hover */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold-500);
+  transition: width var(--duration-fast) var(--ease-out);
+}
+
+.link-underline:hover::after {
+  width: 100%;
 }

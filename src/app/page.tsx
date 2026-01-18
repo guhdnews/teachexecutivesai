@@ -319,10 +319,67 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* As Featured In - Credibility */}
+      <section className="py-12 border-y border-navy-100">
+        <div className="container">
+          <p className="text-center text-navy-500 text-sm font-medium mb-8 uppercase tracking-wider">
+            Featured In
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60">
+            {/* Using text logos for simplicity - in production, replace with actual SVG logos */}
+            <span className="text-2xl font-bold text-navy-400">Forbes</span>
+            <span className="text-2xl font-bold text-navy-400">WSJ</span>
+            <span className="text-2xl font-bold text-navy-400">CNN</span>
+            <span className="text-2xl font-bold text-navy-400">AARP</span>
+            <span className="text-2xl font-bold text-navy-400">Inc.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-display-md text-navy-800 mb-4">
+                Common Questions
+              </h2>
+              <p className="text-body-lg text-navy-600">
+                Honest answers to what people ask before signing up
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <FAQItem
+                question="I'm not tech-savvy at all. Can I really learn this?"
+                answer="Absolutely. We designed this specifically for people who feel intimidated by technology. Our lessons assume zero prior knowledge, use plain English, and go at your pace. If you can send an email, you can learn AI with us."
+              />
+              <FAQItem
+                question="Is AI safe? I've heard about scams and privacy issues."
+                answer="Great question — and exactly why we include a comprehensive AI Security Checklist in our free training. We teach you how to use AI safely, protect your personal information, and spot common scams. Safety is always our first priority."
+              />
+              <FAQItem
+                question="How is this different from just watching YouTube videos?"
+                answer="YouTube is overwhelming and scattered. Our program is structured, sequential, and designed for adult learners. Plus, you get worksheets, real exercises, and a clear path from beginner to confident user. No more random videos that leave you more confused."
+              />
+              <FAQItem
+                question="What if I need help or get stuck?"
+                answer="We've got you covered. Every lesson includes clear examples, and our help desk responds to questions personally — not with AI bots. You're never left figuring things out alone."
+              />
+              <FAQItem
+                question="Can I really start a business using AI at my age?"
+                answer="Age is actually your advantage. Companies desperately need experienced professionals who understand business AND can use AI. Your 30+ years of industry knowledge combined with AI skills is a rare and valuable combination. Many of our graduates are consulting within weeks of completing the program."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 gradient-warm">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
+            <div className="divider-gold mx-auto mb-6" />
             <h2 className="text-display-md text-navy-800 mb-4">
               Ready to Start Your AI Journey?
             </h2>
@@ -540,3 +597,25 @@ function TestimonialCard({
     </div>
   );
 }
+
+// Component: FAQ Item
+function FAQItem({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
+  return (
+    <div className="border border-navy-200 rounded-lg p-6 hover:border-gold-300 transition-colors">
+      <h3 className="text-h4 text-navy-800 mb-3 flex items-start gap-2">
+        <span className="text-gold-500 font-bold">Q:</span>
+        {question}
+      </h3>
+      <p className="text-navy-600 pl-6">
+        <span className="text-gold-600 font-semibold">A:</span> {answer}
+      </p>
+    </div>
+  );
+}
+
