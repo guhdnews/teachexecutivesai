@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Shield,
   Users,
@@ -10,6 +11,9 @@ import {
   BookOpen,
   Heart,
   Lightbulb,
+  Menu,
+  Briefcase,
+  DollarSign,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -19,20 +23,34 @@ export default function HomePage() {
       <header className="bg-white border-b sticky top-0 z-50">
         <div className="container flex items-center justify-between py-4">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-navy-800 rounded-lg flex items-center justify-center">
-              <span className="text-gold-500 font-bold text-xl">A</span>
-            </div>
-            <span className="text-navy-800 font-semibold text-lg hidden sm:block">
-              AI Courses for Adults
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="AI Courses for Adults"
+              width={200}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
-          <nav className="flex items-center gap-4">
+          <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/free"
-              className="text-navy-600 hover:text-navy-800 font-medium hidden sm:block"
+              className="text-navy-600 hover:text-navy-800 font-medium"
             >
               Free Training
+            </Link>
+            <Link
+              href="/certification"
+              className="text-navy-600 hover:text-navy-800 font-medium"
+            >
+              Courses
+            </Link>
+            <Link
+              href="/blog"
+              className="text-navy-600 hover:text-navy-800 font-medium"
+            >
+              Blog
             </Link>
             <Link
               href="/login"
@@ -44,6 +62,16 @@ export default function HomePage() {
               Get Started
             </Link>
           </nav>
+
+          {/* Mobile nav */}
+          <div className="flex md:hidden items-center gap-3">
+            <Link href="/login" className="text-navy-600 font-medium">
+              Log In
+            </Link>
+            <Link href="/free" className="btn btn-primary text-sm px-4 py-2">
+              Start Free
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -70,7 +98,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="#how-it-works"
-                className="btn btn-outline border-white text-white hover:bg-white/10 text-lg px-8 py-4"
+                className="btn border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-900 text-lg px-8 py-4"
               >
                 How It Works
               </Link>
@@ -100,7 +128,7 @@ export default function HomePage() {
               Does This Sound Familiar?
             </h2>
             <p className="text-body-lg text-navy-600">
-              Many adults over 55 feel left behind in the AI revolution...
+              You have decades of valuable experience, but feel stuck watching others profit from AI...
             </p>
           </div>
 
@@ -108,17 +136,17 @@ export default function HomePage() {
             <ProblemCard
               emoji="😰"
               title="Overwhelmed by Technology"
-              description="ChatGPT, Gemini, Copilot... there are so many AI tools and nobody explains them in plain English."
+              description="Everyone talks about AI, but nobody explains how YOU can actually make money with it — using the skills you already have."
             />
             <ProblemCard
-              emoji="🤯"
-              title="Fear of Making Mistakes"
-              description="You've heard about AI scams and deepfakes. How do you use AI safely without putting yourself at risk?"
+              emoji="💰"
+              title="Missing Out on Income"
+              description="You see younger people starting AI businesses, but you're not sure how to turn your 30+ years of experience into a real income stream."
             />
             <ProblemCard
-              emoji="💭"
-              title="Feeling Left Behind"
-              description="Your kids and grandkids use AI like it's second nature. You just want to keep up and stay relevant."
+              emoji="⏰"
+              title="Running Out of Time"
+              description="Every month you wait, more people are getting ahead. You need a clear, step-by-step path — not more confusing tech talk."
             />
           </div>
         </div>
@@ -128,31 +156,31 @@ export default function HomePage() {
       <section id="how-it-works" className="bg-navy-50 py-16 lg:py-24">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-gold-600 font-semibold mb-2">The Solution</p>
+            <p className="text-gold-600 font-semibold mb-2">Your Path to Profit</p>
             <h2 className="text-display-md text-navy-800 mb-4">
-              AI Training Designed for Your Generation
+              From "What is AI?" to Your Own Business
             </h2>
             <p className="text-body-lg text-navy-600">
-              Clear explanations, practical examples, and step-by-step guidance —
-              all at a pace that works for you.
+              We teach you AI AND show you exactly how to turn your experience into income.
+              No tech background required.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <FeatureCard
               icon={Lightbulb}
-              title="Learn the Basics"
-              description="Start with our free security checklist to protect yourself, then learn what AI actually is and how it works."
+              title="1. Master the Basics"
+              description="Learn AI fundamentals in plain English. No jargon, no confusion — just practical skills you can use immediately."
             />
             <FeatureCard
-              icon={BookOpen}
-              title="Practical Training"
-              description="Step-by-step courses that teach you to use AI for everyday tasks — writing, researching, organizing, and more."
+              icon={Briefcase}
+              title="2. Find Your Niche"
+              description="Discover which industries desperately need YOUR experience. We'll help you find the perfect fit for your background."
             />
             <FeatureCard
-              icon={Heart}
-              title="Supportive Community"
-              description="Connect with others your age who are learning AI. Share tips, ask questions, and grow together."
+              icon={DollarSign}
+              title="3. Start Earning"
+              description="Get your first paying clients using our proven templates, tools, and community support. Many earn within 30 days."
             />
           </div>
         </div>
@@ -166,19 +194,19 @@ export default function HomePage() {
               What Will You Use AI For?
             </h2>
             <p className="text-body-lg text-navy-600">
-              AI isn&apos;t just for techies — it can help with everyday life
+              Start with personal tasks, then scale to a real business
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            <UseCaseCard emoji="✍️" title="Write better emails and letters" />
-            <UseCaseCard emoji="🔍" title="Research any topic quickly" />
-            <UseCaseCard emoji="📅" title="Organize your schedule and tasks" />
-            <UseCaseCard emoji="💡" title="Get creative ideas and inspiration" />
-            <UseCaseCard emoji="📝" title="Summarize long articles" />
-            <UseCaseCard emoji="🌐" title="Translate languages instantly" />
-            <UseCaseCard emoji="📞" title="Prepare for conversations" />
-            <UseCaseCard emoji="🛡️" title="Spot scams and stay safe online" />
+            <UseCaseCard emoji="✍️" title="Write proposals & emails for clients" />
+            <UseCaseCard emoji="🔍" title="Research industries in minutes" />
+            <UseCaseCard emoji="📊" title="Create reports & presentations" />
+            <UseCaseCard emoji="💡" title="Generate business ideas for your niche" />
+            <UseCaseCard emoji="📝" title="Summarize contracts & documents" />
+            <UseCaseCard emoji="🎯" title="Find and qualify potential clients" />
+            <UseCaseCard emoji="📞" title="Prepare for sales conversations" />
+            <UseCaseCard emoji="💵" title="Price your services confidently" />
           </div>
         </div>
       </section>
@@ -315,23 +343,6 @@ export default function HomePage() {
             <p className="text-navy-800 font-semibold mt-3">
               — The AI Courses for Adults Team
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* As Featured In - Credibility */}
-      <section className="py-12 border-y border-navy-100">
-        <div className="container">
-          <p className="text-center text-navy-500 text-sm font-medium mb-8 uppercase tracking-wider">
-            Featured In
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {/* Using text logos for simplicity - in production, replace with actual SVG logos */}
-            <span className="text-2xl font-bold text-navy-600">Forbes</span>
-            <span className="text-2xl font-bold text-navy-600">WSJ</span>
-            <span className="text-2xl font-bold text-navy-600">CNN</span>
-            <span className="text-2xl font-bold text-navy-600">AARP</span>
-            <span className="text-2xl font-bold text-navy-600">Inc.</span>
           </div>
         </div>
       </section>

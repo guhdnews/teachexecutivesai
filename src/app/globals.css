@@ -279,12 +279,19 @@ body {
    Card Base
    -------------------------------------------------------------------------- */
 .card {
-  background: white;
+  background: var(--card-bg, white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
   transition: all var(--duration-fast) var(--ease-out);
+}
+
+/* Premium variant - dark background */
+.card.bg-navy-800 {
+  --card-bg: transparent;
+  background: #243b53;
+  border-color: #334e68;
 }
 
 .card:hover {
