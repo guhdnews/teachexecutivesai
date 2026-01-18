@@ -276,6 +276,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Stats / Why Choose Us */}
+      <section className="py-16 lg:py-20 bg-gradient-to-b from-navy-50 to-white">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-display-md text-navy-800 mb-4">
+              Why Adults Trust Us
+            </h2>
+            <p className="text-body-lg text-navy-600">
+              We&apos;re not just another tech company. We understand your generation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <p className="text-4xl font-bold text-gold-500 mb-2">2,500+</p>
+              <p className="text-navy-600">Adults Trained</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-gold-500 mb-2">98%</p>
+              <p className="text-navy-600">Satisfaction Rate</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-gold-500 mb-2">150+</p>
+              <p className="text-navy-600">Businesses Started</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-gold-500 mb-2">30 Days</p>
+              <p className="text-navy-600">Money-Back Guarantee</p>
+            </div>
+          </div>
+
+          <div className="mt-12 max-w-2xl mx-auto text-center">
+            <p className="text-navy-600 italic">
+              &ldquo;We designed this program specifically for adults who feel left behind
+              by technology. No jargon, no rushing, just clear guidance at your pace.&rdquo;
+            </p>
+            <p className="text-navy-800 font-semibold mt-3">
+              — The AI Courses for Adults Team
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-16 lg:py-24">
         <div className="container">
@@ -284,12 +327,15 @@ export default function HomePage() {
               Ready to Start Your AI Journey?
             </h2>
             <p className="text-body-lg text-navy-600 mb-8">
-              Begin with our free Digital Defense Briefing and take the first step today.
+              Begin with our free AI Quickstart training and take the first step today.
             </p>
             <Link href="/free" className="btn btn-primary text-lg px-8 py-4">
               Get Your Free Training
               <ArrowRight className="w-5 h-5" />
             </Link>
+            <p className="text-sm text-navy-500 mt-4">
+              No credit card required • Instant access • Unsubscribe anytime
+            </p>
           </div>
         </div>
       </section>
