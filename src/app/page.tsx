@@ -8,6 +8,8 @@ import {
   Zap,
   Target,
   BookOpen,
+  Heart,
+  Lightbulb,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -18,10 +20,10 @@ export default function HomePage() {
         <div className="container flex items-center justify-between py-4">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-navy-800 rounded-lg flex items-center justify-center">
-              <span className="text-gold-500 font-bold text-xl">E</span>
+              <span className="text-gold-500 font-bold text-xl">A</span>
             </div>
             <span className="text-navy-800 font-semibold text-lg hidden sm:block">
-              Executive AI Institute
+              AI for Boomers
             </span>
           </Link>
 
@@ -50,15 +52,16 @@ export default function HomePage() {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-gold-400 font-semibold mb-4 text-lg">
-              For Executives & Professionals 55+
+              AI Made Simple for Adults 55+
             </p>
             <h1 className="text-display-lg mb-6">
-              Turn 40 Years of Experience Into a Profitable
-              <span className="text-gold-400"> AI-Powered</span> Consulting Business
+              Finally, Learn AI the
+              <span className="text-gold-400"> Right Way</span> — At Your Own Pace
             </h1>
             <p className="text-body-lg text-navy-200 mb-8 max-w-2xl mx-auto">
-              You&apos;ve led teams, managed budgets, and navigated corporate politics.
-              Now learn to use AI as your digital staff—no coding required.
+              No tech jargon. No confusing tutorials. Just clear, practical AI training
+              designed specifically for your generation. Start with the basics and work
+              your way up — on your schedule.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/free" className="btn btn-primary text-lg px-8 py-4">
@@ -83,8 +86,8 @@ export default function HomePage() {
       <section className="bg-navy-50 py-6 border-b">
         <div className="container">
           <p className="text-center text-navy-600">
-            <span className="font-semibold">Join 1,000+ executives</span> who&apos;ve
-            discovered how to leverage AI for their next chapter
+            <span className="font-semibold">Join thousands of adults</span> who&apos;ve
+            discovered how to use AI confidently and safely
           </p>
         </div>
       </section>
@@ -97,25 +100,25 @@ export default function HomePage() {
               Does This Sound Familiar?
             </h2>
             <p className="text-body-lg text-navy-600">
-              Most executives over 50 feel like they&apos;re being left behind in the AI revolution...
+              Many adults over 55 feel left behind in the AI revolution...
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <ProblemCard
               emoji="😰"
-              title="Worried About Relevance"
-              description="You've heard AI is 'replacing jobs' and wonder if your decades of experience still matter."
+              title="Overwhelmed by Technology"
+              description="ChatGPT, Gemini, Copilot... there are so many AI tools and nobody explains them in plain English."
             />
             <ProblemCard
               emoji="🤯"
-              title="Overwhelmed by Tech"
-              description="Every AI tool seems designed for 25-year-olds who grew up with smartphones in their hands."
+              title="Fear of Making Mistakes"
+              description="You've heard about AI scams and deepfakes. How do you use AI safely without putting yourself at risk?"
             />
             <ProblemCard
               emoji="💭"
-              title="Unclear Next Steps"
-              description="Retirement is approaching (or here), but you're not ready to stop contributing—you just need a new vehicle."
+              title="Feeling Left Behind"
+              description="Your kids and grandkids use AI like it's second nature. You just want to keep up and stay relevant."
             />
           </div>
         </div>
@@ -127,41 +130,66 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-gold-600 font-semibold mb-2">The Solution</p>
             <h2 className="text-display-md text-navy-800 mb-4">
-              AI Isn&apos;t Replacing You—It&apos;s Your New Staff
+              AI Training Designed for Your Generation
             </h2>
             <p className="text-body-lg text-navy-600">
-              Think of AI as a team of tireless assistants who never call in sick,
-              never need training twice, and work 24/7.
+              Clear explanations, practical examples, and step-by-step guidance —
+              all at a pace that works for you.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <FeatureCard
-              icon={Target}
-              title="Find Your Niche"
-              description="Our AI tool analyzes your unique experience and identifies 3 profitable micro-niches where your expertise commands premium rates."
-            />
-            <FeatureCard
-              icon={TrendingUp}
-              title="Build Authority"
-              description="Create LinkedIn posts, newsletters, and cold emails that position you as the go-to expert—all with AI assistance."
+              icon={Lightbulb}
+              title="Learn the Basics"
+              description="Start with our free security checklist to protect yourself, then learn what AI actually is and how it works."
             />
             <FeatureCard
               icon={BookOpen}
-              title="Close Deals"
-              description="Generate professional proposals and contracts in minutes, not hours. Look like a seasoned firm from day one."
+              title="Practical Training"
+              description="Step-by-step courses that teach you to use AI for everyday tasks — writing, researching, organizing, and more."
+            />
+            <FeatureCard
+              icon={Heart}
+              title="Supportive Community"
+              description="Connect with others your age who are learning AI. Share tips, ask questions, and grow together."
             />
           </div>
         </div>
       </section>
 
-      {/* Offer Stack */}
+      {/* What You Can Do */}
       <section className="py-16 lg:py-24">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-display-md text-navy-800 mb-4">
+              What Will You Use AI For?
+            </h2>
+            <p className="text-body-lg text-navy-600">
+              AI isn&apos;t just for techies — it can help with everyday life
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <UseCaseCard emoji="✍️" title="Write better emails and letters" />
+            <UseCaseCard emoji="🔍" title="Research any topic quickly" />
+            <UseCaseCard emoji="📅" title="Organize your schedule and tasks" />
+            <UseCaseCard emoji="💡" title="Get creative ideas and inspiration" />
+            <UseCaseCard emoji="📝" title="Summarize long articles" />
+            <UseCaseCard emoji="🌐" title="Translate languages instantly" />
+            <UseCaseCard emoji="📞" title="Prepare for conversations" />
+            <UseCaseCard emoji="🛡️" title="Spot scams and stay safe online" />
+          </div>
+        </div>
+      </section>
+
+      {/* Offer Stack */}
+      <section className="bg-navy-50 py-16 lg:py-24">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-gold-600 font-semibold mb-2">Your Learning Path</p>
             <h2 className="text-display-md text-navy-800 mb-4">
-              Three Steps to AI Mastery
+              Start Free, Then Go Deeper
             </h2>
           </div>
 
@@ -181,13 +209,13 @@ export default function HomePage() {
             />
             <OfferCard
               step="2"
-              title="CAIO Certification"
+              title="AI Essentials Course"
               price="$197"
               features={[
                 "11 comprehensive lessons",
-                "Prompt engineering mastery",
-                "Official CAIO certificate",
-                "LinkedIn badge",
+                "Learn to use ChatGPT & more",
+                "Certificate of completion",
+                "Lifetime access",
               ]}
               ctaText="Learn More"
               ctaHref="/certification"
@@ -195,15 +223,15 @@ export default function HomePage() {
             />
             <OfferCard
               step="3"
-              title="Wisdom Consultant Launchpad"
+              title="Complete AI Mastery"
               price="$497"
               features={[
-                "Everything in CAIO",
-                "3 AI-powered tools",
-                "Business launch system",
-                "Private community",
+                "Everything in Essentials",
+                "Advanced AI tools",
+                "One-on-one support",
+                "Private community access",
               ]}
-              ctaText="Launch Your Business"
+              ctaText="Start Your Journey"
               ctaHref="/launchpad"
               variant="premium"
             />
@@ -216,28 +244,28 @@ export default function HomePage() {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-display-md mb-4">
-              What Our Members Say
+              What Our Students Say
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <TestimonialCard
               name="Robert M."
-              age={62}
-              title="Former VP of Operations"
-              quote="I was skeptical about AI until I found this program. Now I have a thriving consulting practice helping manufacturing companies modernize."
+              age={68}
+              title="Retired Teacher"
+              quote="I was scared of AI until I found this course. Now I use ChatGPT every day to help write emails and plan my garden!"
             />
             <TestimonialCard
               name="Patricia K."
-              age={58}
-              title="Retired HR Director"
-              quote="The Niche Architect tool helped me discover a specialty I never would have thought of. I landed my first $15K contract in month two."
+              age={62}
+              title="Grandmother of 4"
+              quote="Finally, someone who explains things without making me feel stupid. I can actually keep up with my grandkids now."
             />
             <TestimonialCard
               name="James T."
-              age={67}
-              title="Former CFO"
-              quote="Finally, an AI program that speaks my language. No jargon, no fluff—just practical tools that work."
+              age={71}
+              title="Retired Engineer"
+              quote="The security checklist alone was worth it. I had no idea how vulnerable I was. Now I feel confident online."
             />
           </div>
         </div>
@@ -248,10 +276,10 @@ export default function HomePage() {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-display-md text-navy-800 mb-4">
-              Ready to Turn Your Experience Into Income?
+              Ready to Start Your AI Journey?
             </h2>
             <p className="text-body-lg text-navy-600 mb-8">
-              Start with our free Digital Defense Briefing and see how AI can work for you.
+              Begin with our free Digital Defense Briefing and take the first step today.
             </p>
             <Link href="/free" className="btn btn-primary text-lg px-8 py-4">
               Get Your Free Training
@@ -268,12 +296,12 @@ export default function HomePage() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
-                  <span className="text-navy-900 font-bold text-xl">E</span>
+                  <span className="text-navy-900 font-bold text-xl">A</span>
                 </div>
-                <span className="font-semibold">Executive AI Institute</span>
+                <span className="font-semibold">AI for Boomers</span>
               </div>
               <p className="text-navy-300 text-sm">
-                Empowering executives to leverage AI for their next chapter.
+                Making AI accessible for adults 55 and older.
               </p>
             </div>
 
@@ -281,18 +309,17 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">Programs</h4>
               <ul className="space-y-2 text-navy-300 text-sm">
                 <li><Link href="/free" className="hover:text-white">Free Training</Link></li>
-                <li><Link href="/sop" className="hover:text-white">AI SOPs</Link></li>
-                <li><Link href="/certification" className="hover:text-white">CAIO Certification</Link></li>
-                <li><Link href="/launchpad" className="hover:text-white">Launchpad</Link></li>
+                <li><Link href="/certification" className="hover:text-white">AI Essentials</Link></li>
+                <li><Link href="/launchpad" className="hover:text-white">Complete Mastery</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
+              <h4 className="font-semibold mb-4">Account</h4>
               <ul className="space-y-2 text-navy-300 text-sm">
-                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
                 <li><Link href="/login" className="hover:text-white">Log In</Link></li>
                 <li><Link href="/signup" className="hover:text-white">Sign Up</Link></li>
+                <li><Link href="/dashboard" className="hover:text-white">My Dashboard</Link></li>
               </ul>
             </div>
 
@@ -302,13 +329,12 @@ export default function HomePage() {
                 <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
                 <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
                 <li><Link href="/refund" className="hover:text-white">Refund Policy</Link></li>
-                <li><Link href="/earnings" className="hover:text-white">Earnings Disclaimer</Link></li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-navy-700 mt-8 pt-8 text-center text-navy-400 text-sm">
-            © {new Date().getFullYear()} Executive AI Institute. All rights reserved.
+            © {new Date().getFullYear()} AI for Boomers. All rights reserved.
           </div>
         </div>
       </footer>
@@ -352,6 +378,16 @@ function FeatureCard({
       </div>
       <h3 className="text-h3 text-navy-800 mb-2">{title}</h3>
       <p className="text-navy-600">{description}</p>
+    </div>
+  );
+}
+
+// Component: Use Case Card
+function UseCaseCard({ emoji, title }: { emoji: string; title: string }) {
+  return (
+    <div className="bg-white p-4 rounded-lg border border-navy-100 text-center">
+      <div className="text-2xl mb-2">{emoji}</div>
+      <p className="text-navy-700 font-medium text-sm">{title}</p>
     </div>
   );
 }

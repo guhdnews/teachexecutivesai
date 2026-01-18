@@ -20,43 +20,44 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "Executive AI Institute | Turn Experience Into AI-Powered Income",
-    template: "%s | Executive AI Institute",
+    default: "AI for Boomers - Learn AI at Your Own Pace",
+    template: "%s | AI for Boomers",
   },
   description:
-    "Learn how retired executives use AI as their digital staff to build profitable consulting practices. No tech skills required. Join 1,000+ professionals.",
+    "AI training designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and embrace technology — all at your own pace. No tech jargon, just clear guidance.",
   keywords: [
-    "AI for executives",
-    "AI training for professionals",
-    "executive AI education",
-    "consulting for retirees",
-    "AI certification",
-    "CAIO certification",
+    "AI for seniors",
+    "AI for older adults",
+    "learn AI",
+    "ChatGPT for beginners",
+    "AI training",
+    "boomer AI course",
+    "senior technology training",
+    "AI for retirees",
+    "digital literacy seniors",
+    "AI safety for seniors",
   ],
-  authors: [{ name: "Executive AI Institute" }],
-  creator: "Executive AI Institute",
-  publisher: "Executive AI Institute",
+  authors: [{ name: "AI for Boomers" }],
+  creator: "AI for Boomers",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://aiforboomers.com",
+    siteName: "AI for Boomers",
+    title: "AI for Boomers - Learn AI at Your Own Pace",
+    description:
+      "AI training designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and embrace technology — all at your own pace.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI for Boomers - Learn AI at Your Own Pace",
+    description:
+      "AI training designed for adults 55+. No tech jargon, just clear guidance.",
+  },
   robots: {
     index: true,
     follow: true,
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "Executive AI Institute",
-    title: "Executive AI Institute | Turn Experience Into AI-Powered Income",
-    description:
-      "Learn how retired executives use AI as their digital staff to build profitable consulting practices. No tech skills required.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Executive AI Institute",
-    description:
-      "Turn 40+ years of experience into a profitable AI-powered consulting business.",
-  },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-  ),
 };
 
 export const viewport: Viewport = {
