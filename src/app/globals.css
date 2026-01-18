@@ -1,0 +1,418 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Executive AI Institute - Design System
+   Navy (#1e3a5f) + Gold (#d4a855) Color Palette
+   Target: Baby Boomers (55-75) - Large fonts, high contrast
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS Custom Properties (Light Mode - Primary)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Navy Palette */
+  --navy-50: #f0f4f8;
+  --navy-100: #d9e2ec;
+  --navy-200: #bcccdc;
+  --navy-300: #9fb3c8;
+  --navy-400: #829ab1;
+  --navy-500: #627d98;
+  --navy-600: #486581;
+  --navy-700: #334e68;
+  --navy-800: #243b53;
+  --navy-900: #102a43;
+
+  /* Gold Palette */
+  --gold-50: #fffcf5;
+  --gold-100: #fef6e7;
+  --gold-200: #fcebc3;
+  --gold-300: #f9dc9d;
+  --gold-400: #f5c952;
+  --gold-500: #d4a855;
+  --gold-600: #b8923f;
+  --gold-700: #8c6f2f;
+
+  /* Semantic Colors */
+  --success: #22c55e;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  /* Backgrounds */
+  --background: #ffffff;
+  --background-alt: var(--navy-50);
+  --foreground: var(--navy-800);
+
+  /* Text */
+  --text-primary: var(--navy-800);
+  --text-secondary: var(--navy-600);
+  --text-muted: var(--navy-500);
+
+  /* Borders */
+  --border: var(--navy-200);
+  --border-focus: var(--gold-500);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(16, 42, 67, 0.05);
+  --shadow-md: 0 4px 6px rgba(16, 42, 67, 0.07);
+  --shadow-lg: 0 10px 15px rgba(16, 42, 67, 0.1);
+  --shadow-xl: 0 20px 25px rgba(16, 42, 67, 0.15);
+  --shadow-glow: 0 0 40px rgba(212, 168, 85, 0.3);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Touch Target (WCAG 2.5.5 AAA) */
+  --touch-min: 44px;
+
+  /* Transitions */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Tailwind Theme Extension
+   -------------------------------------------------------------------------- */
+@theme inline {
+  /* Colors */
+  --color-navy-50: var(--navy-50);
+  --color-navy-100: var(--navy-100);
+  --color-navy-200: var(--navy-200);
+  --color-navy-300: var(--navy-300);
+  --color-navy-400: var(--navy-400);
+  --color-navy-500: var(--navy-500);
+  --color-navy-600: var(--navy-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Fonts */
+  --font-display: var(--font-outfit);
+  --font-body: var(--font-inter);
+}
+
+/* --------------------------------------------------------------------------
+   Base Styles
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  /* Minimum 18px for boomer accessibility */
+  font-size: 1.125rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   Typography Scale (using clamp for responsive)
+   -------------------------------------------------------------------------- */
+.text-display-lg {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-display-md {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.text-h1 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.text-h2 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.text-h3 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-body-lg {
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.text-body {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.text-body-sm {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.text-caption {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Focus States (Accessibility)
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons Base
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+  /* Minimum touch target */
+  min-height: var(--touch-min);
+  padding: var(--space-3) var(--space-6);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--gold-500);
+  color: var(--navy-900);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background: var(--gold-600);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: var(--navy-800);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: var(--navy-900);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--navy-300);
+  color: var(--navy-700);
+}
+
+.btn-outline:hover {
+  border-color: var(--navy-500);
+  background: var(--navy-50);
+}
+
+/* --------------------------------------------------------------------------
+   Card Base
+   -------------------------------------------------------------------------- */
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+/* --------------------------------------------------------------------------
+   Form Inputs (Large for Boomers)
+   -------------------------------------------------------------------------- */
+.input {
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: var(--space-3) var(--space-4);
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  background: white;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus {
+  border-color: var(--gold-500);
+  outline: none;
+}
+
+.input-error {
+  border-color: var(--error);
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 0.875rem;
+  margin-top: var(--space-1);
+}
+
+/* --------------------------------------------------------------------------
+   Animations
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-out);
+}
+
+.animate-slide-up {
+  animation: slideUp var(--duration-normal) var(--ease-out);
+}
+
+.animate-pulse {
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Container
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section Spacing
+   -------------------------------------------------------------------------- */
+.section {
+  padding-top: var(--space-9);
+  padding-bottom: var(--space-9);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+}
