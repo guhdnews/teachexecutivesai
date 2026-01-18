@@ -28,14 +28,14 @@ interface NavItem {
 const navItems: NavItem[] = [
     { label: "Dashboard", href: "/dashboard", icon: Home },
     { label: "My Courses", href: "/dashboard/courses", icon: BookOpen },
-    { label: "AI Tools", href: "/dashboard/tools", icon: Wrench, tier: "launchpad" },
+    { label: "AI Tools", href: "/dashboard/tools", icon: Wrench },
     { label: "Referrals", href: "/dashboard/referrals", icon: Users },
     { label: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
     const { user, signOut } = useAuth();
-    const { profile, hasAccess } = useUser();
+    const { profile } = useUser();
     const pathname = usePathname();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -65,9 +65,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <div className="p-6 border-b border-navy-700">
                     <Link href="/dashboard" className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
-                            <span className="text-navy-900 font-bold text-xl">E</span>
+                            <span className="text-navy-900 font-bold text-xl">A</span>
                         </div>
-                        <span className="font-semibold text-lg">Executive AI</span>
+                        <span className="font-semibold text-lg">AI for Boomers</span>
                     </Link>
                 </div>
 
@@ -75,12 +75,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <nav className="flex-1 p-4 overflow-y-auto">
                     <ul className="space-y-2">
                         {navItems.map((item) => {
-                            // Check if user has access to this nav item
-                            const canAccess = !item.tier || hasAccess(item.tier);
                             const isActive = pathname === item.href ||
                                 (item.href !== "/dashboard" && pathname.startsWith(item.href));
-
-                            if (!canAccess) return null;
 
                             return (
                                 <li key={item.href}>
@@ -143,7 +139,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
                         <Link href="/dashboard" className="flex items-center gap-2">
                             <div className="w-8 h-8 bg-navy-800 rounded-lg flex items-center justify-center">
-                                <span className="text-gold-500 font-bold text-sm">E</span>
+                                <span className="text-gold-500 font-bold text-sm">A</span>
                             </div>
                         </Link>
 

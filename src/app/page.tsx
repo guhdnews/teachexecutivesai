@@ -55,13 +55,13 @@ export default function HomePage() {
               AI Made Simple for Adults 55+
             </p>
             <h1 className="text-display-lg mb-6">
-              Finally, Learn AI the
-              <span className="text-gold-400"> Right Way</span> — At Your Own Pace
+              Turn Your Life Experience Into a
+              <span className="text-gold-400"> Profitable AI Business</span>
             </h1>
             <p className="text-body-lg text-navy-200 mb-8 max-w-2xl mx-auto">
-              No tech jargon. No confusing tutorials. Just clear, practical AI training
-              designed specifically for your generation. Start with the basics and work
-              your way up — on your schedule.
+              Learn AI the right way AND discover how to start your own AI consulting business.
+              Your decades of experience + our AI training = a powerful combination that
+              today&apos;s market desperately needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/free" className="btn btn-primary text-lg px-8 py-4">
@@ -187,21 +187,24 @@ export default function HomePage() {
       <section className="bg-navy-50 py-16 lg:py-24">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-gold-600 font-semibold mb-2">Your Learning Path</p>
+            <p className="text-gold-600 font-semibold mb-2">Your Path to AI Mastery & Business Success</p>
             <h2 className="text-display-md text-navy-800 mb-4">
-              Start Free, Then Go Deeper
+              From Beginner to Business Owner
             </h2>
+            <p className="text-body-lg text-navy-600">
+              Start free, learn the essentials, then build your own AI consulting business
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <OfferCard
               step="1"
-              title="Free: Digital Defense Briefing"
-              price="$0"
+              title="AI Quickstart"
+              price="FREE"
               features={[
-                "1-page AI security checklist",
+                "AI security checklist",
                 "Protect yourself from scams",
-                "Instant PDF download",
+                "Instant access",
               ]}
               ctaText="Get Free Access"
               ctaHref="/free"
@@ -209,29 +212,31 @@ export default function HomePage() {
             />
             <OfferCard
               step="2"
-              title="AI Essentials Course"
+              title="AI Essentials Bundle"
               price="$197"
               features={[
                 "11 comprehensive lessons",
-                "Learn to use ChatGPT & more",
+                "Use ChatGPT like a pro",
                 "Certificate of completion",
                 "Lifetime access",
               ]}
-              ctaText="Learn More"
+              ctaText="Get the Bundle"
               ctaHref="/certification"
               variant="popular"
             />
             <OfferCard
               step="3"
-              title="Complete AI Mastery"
+              title="AI Business Builder"
               price="$497"
+              highlight="START YOUR BUSINESS"
               features={[
                 "Everything in Essentials",
-                "Advanced AI tools",
-                "One-on-one support",
-                "Private community access",
+                "3 AI business tools included",
+                "Find your profitable niche",
+                "Generate clients & proposals",
+                "1-on-1 support + community",
               ]}
-              ctaText="Start Your Journey"
+              ctaText="Build Your Business"
               ctaHref="/launchpad"
               variant="premium"
             />
@@ -252,20 +257,20 @@ export default function HomePage() {
             <TestimonialCard
               name="Robert M."
               age={68}
-              title="Retired Teacher"
-              quote="I was scared of AI until I found this course. Now I use ChatGPT every day to help write emails and plan my garden!"
+              title="Retired Teacher → AI Consultant"
+              quote="I never thought I'd start a business at 68, but now I help local businesses use AI. Made $3,400 in my first month!"
             />
             <TestimonialCard
               name="Patricia K."
               age={62}
-              title="Grandmother of 4"
-              quote="Finally, someone who explains things without making me feel stupid. I can actually keep up with my grandkids now."
+              title="Former HR Director"
+              quote="The business tools are incredible. I found my niche in helping HR departments with AI — something I know inside out."
             />
             <TestimonialCard
               name="James T."
               age={71}
-              title="Retired Engineer"
-              quote="The security checklist alone was worth it. I had no idea how vulnerable I was. Now I feel confident online."
+              title="Retired Engineer → Tech Advisor"
+              quote="At 71, I'm now the AI expert my former colleagues call for advice. My engineering background plus AI training = perfect combo."
             />
           </div>
         </div>
@@ -401,11 +406,13 @@ function OfferCard({
   ctaText,
   ctaHref,
   variant,
+  highlight,
 }: {
   step: string;
   title: string;
   price: string;
   features: string[];
+  highlight?: string;
   ctaText: string;
   ctaHref: string;
   variant: "free" | "popular" | "premium";
@@ -421,6 +428,11 @@ function OfferCard({
       {isPopular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-navy-900 text-sm font-semibold px-4 py-1 rounded-full">
           Most Popular
+        </div>
+      )}
+      {isPremium && highlight && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-white text-sm font-semibold px-4 py-1 rounded-full">
+          {highlight}
         </div>
       )}
       <div className="text-sm text-gold-600 font-semibold mb-2">Step {step}</div>
@@ -443,10 +455,10 @@ function OfferCard({
       <Link
         href={ctaHref}
         className={`btn w-full ${isPremium
-            ? "bg-gold-500 text-navy-900 hover:bg-gold-400"
-            : variant === "free"
-              ? "btn-outline"
-              : "btn-primary"
+          ? "bg-gold-500 text-navy-900 hover:bg-gold-400"
+          : variant === "free"
+            ? "btn-outline"
+            : "btn-primary"
           }`}
       >
         {ctaText}

@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // USERS COLLECTION
+    // ============================================
+    match /users/{userId} {
+      // Users can read and update their own profile
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId
+        && !request.resource.data.diff(resource.data).affectedKeys()
+            .hasAny(['tier', 'role', 'stripeCustomerId', 'referralCode']);
+      // Only server can create users (via admin SDK)
+      allow create: if false;
+      allow delete: if false;
+      
+      // Rate limits subcollection - users can read/write their own
+      match /rateLimits/{doc} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Saved assets from AI tools
+      match /savedAssets/{assetId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Course progress tracking
+      match /progress/{courseId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+    
+    // ============================================
+    // REFERRALS COLLECTION
+    // ============================================
+    match /referrals/{refId} {
+      // Users can read referrals where they are the referrer
+      allow read: if request.auth != null 
+        && resource.data.referrerId == request.auth.uid;
+      // Only server can create/update referrals
+      allow create, update, delete: if false;
+    }
+    
+    // ============================================
+    // EMAIL SUBSCRIBERS COLLECTION
+    // ============================================
+    match /emailSubscribers/{docId} {
+      // Server-only access (via admin SDK)
+      allow read, write: if false;
+    }
+    
+    // ============================================
+    // GENERATIONS COLLECTION (AI Tool History)
+    // ============================================
+    match /generations/{genId} {
+      // Users can read their own generations
+      allow read: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+      // Only server can create generations
+      allow create, update, delete: if false;
+    }
+    
+    // ============================================
+    // COURSES COLLECTION (Public, Read-Only)
+    // ============================================
+    match /courses/{courseId} {
+      // Anyone authenticated can read course metadata
+      allow read: if request.auth != null;
+      allow write: if false;
+      
+      // Lessons subcollection
+      match /lessons/{lessonId} {
+        // Users can read lessons if they have access to the course
+        allow read: if request.auth != null;
+        allow write: if false;
+      }
+    }
+    
+    // ============================================
+    // CATCH-ALL: Deny everything else
+    // ============================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

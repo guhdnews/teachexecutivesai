@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
-import { Toaster } from "sonner";
 
 // Body font - Inter for readability
 const inter = Inter({
@@ -77,15 +76,6 @@ export default function RootLayout({
       <body className="antialiased">
         <Providers>
           {children}
-          <Toaster
-            position="top-center"
-            richColors
-            closeButton
-            toastOptions={{
-              duration: 5000,
-              className: "text-base",
-            }}
-          />
         </Providers>
       </body>
     </html>
