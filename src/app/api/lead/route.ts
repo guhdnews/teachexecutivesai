@@ -1,8 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminDb } from "@/lib/firebase-admin";
 
+// Simple in-memory rate limiting (per IP)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT = 5; // 5 requests
+const RATE_WINDOW = 60 * 1000; // per minute
+
+function checkRateLimit(ip: string): boolean {
+    const now = Date.now();
+    const record = rateLimitMap.get(ip);
+
+    if (!record || now > record.resetTime) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW });
+        return true;
+    }
+
+    if (record.count >= RATE_LIMIT) {
+        return false;
+    }
+
+    record.count++;
+    return true;
+}
+
 export async function POST(request: NextRequest) {
     try {
+        // Rate limit by IP
+        const ip = request.headers.get("x-forwarded-for") ||
+            request.headers.get("x-real-ip") ||
+            "unknown";
+
+        if (!checkRateLimit(ip)) {
+            return NextResponse.json(
+                { error: "Too many requests. Please try again in a minute." },
+                { status: 429 }
+            );
+        }
+
         const db = getAdminDb();
 
         if (!db) {
@@ -51,18 +85,9 @@ export async function POST(request: NextRequest) {
             }
         }
 
-        // TODO: Send to ConvertKit when configured
-        // const convertKitApiKey = process.env.CONVERTKIT_API_KEY;
-        // if (convertKitApiKey) {
-        //   await sendToConvertKit(name, email);
-        // }
-
-        // TODO: Send welcome email with PDF attachment
-        // For now, we'll return success and let the frontend handle the download
-
         return NextResponse.json({
             success: true,
-            message: "Thank you! Check your email for the download link.",
+            message: "You're all set! Access your content on the next page.",
         });
     } catch (error) {
         console.error("Lead capture error:", error);

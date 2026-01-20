@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth, useUser } from "@/contexts";
 import { useRouter } from "next/navigation";
 import {
@@ -42,14 +43,36 @@ export function AdminContent() {
             return;
         }
 
-        // Mock stats for now - would come from Firestore aggregations
-        setStats({
-            totalUsers: 2547,
-            totalRevenue: 127350,
-            activeSubscriptions: 342,
-            coursesCompleted: 1893,
-        });
-        setLoading(false);
+        // Fetch real stats from API
+        const fetchStats = async () => {
+            try {
+                const response = await fetch("/api/admin/stats");
+                if (response.ok) {
+                    const data = await response.json();
+                    setStats(data);
+                } else {
+                    // Fallback to zeros if API fails
+                    setStats({
+                        totalUsers: 0,
+                        totalRevenue: 0,
+                        activeSubscriptions: 0,
+                        coursesCompleted: 0,
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to fetch stats:", error);
+                setStats({
+                    totalUsers: 0,
+                    totalRevenue: 0,
+                    activeSubscriptions: 0,
+                    coursesCompleted: 0,
+                });
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchStats();
     }, [user, isAdmin, router]);
 
     if (loading) {
@@ -71,9 +94,13 @@ export function AdminContent() {
                 <div className="container py-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
-                                <span className="text-navy-900 font-bold text-xl">A</span>
-                            </div>
+                            <Image
+                                src="/images/icon-192.png"
+                                alt="AI Courses for Adults"
+                                width={40}
+                                height={40}
+                                className="w-10 h-10"
+                            />
                             <span className="font-semibold text-lg">Admin Dashboard</span>
                         </Link>
                     </div>

@@ -4,76 +4,76 @@
  */
 
 const XAI_API_URL = "https://api.x.ai/v1/chat/completions";
-const XAI_API_KEY = process.env.XAI_API_KEY!;
+const XAI_API_KEY = process.env.XAI_API_KEY || "";
 
 export interface GrokMessage {
-    role: "system" | "user" | "assistant";
-    content: string;
+  role: "system" | "user" | "assistant";
+  content: string;
 }
 
 export interface GrokResponse {
-    id: string;
-    object: string;
-    created: number;
-    model: string;
-    choices: {
-        index: number;
-        message: {
-            role: string;
-            content: string;
-        };
-        finish_reason: string;
-    }[];
-    usage: {
-        prompt_tokens: number;
-        completion_tokens: number;
-        total_tokens: number;
+  id: string;
+  object: string;
+  created: number;
+  model: string;
+  choices: {
+    index: number;
+    message: {
+      role: string;
+      content: string;
     };
+    finish_reason: string;
+  }[];
+  usage: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens: number;
+  };
 }
 
 export interface GrokOptions {
-    model?: string;
-    maxTokens?: number;
-    temperature?: number;
+  model?: string;
+  maxTokens?: number;
+  temperature?: number;
 }
 
 /**
  * Send a chat completion request to Grok API
  */
 export async function generateWithGrok(
-    messages: GrokMessage[],
-    options: GrokOptions = {}
+  messages: GrokMessage[],
+  options: GrokOptions = {}
 ): Promise<string> {
-    const { model = "grok-2-latest", maxTokens = 4000, temperature = 0.7 } = options;
+  const { model = "grok-2-latest", maxTokens = 4000, temperature = 0.7 } = options;
 
-    const response = await fetch(XAI_API_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${XAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-            model,
-            messages,
-            max_tokens: maxTokens,
-            temperature,
-        }),
-    });
+  const response = await fetch(XAI_API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${XAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      max_tokens: maxTokens,
+      temperature,
+    }),
+  });
 
-    if (!response.ok) {
-        const error = await response.text();
-        throw new Error(`Grok API error: ${response.status} - ${error}`);
-    }
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Grok API error: ${response.status} - ${error}`);
+  }
 
-    const data: GrokResponse = await response.json();
-    return data.choices[0]?.message?.content || "";
+  const data: GrokResponse = await response.json();
+  return data.choices[0]?.message?.content || "";
 }
 
 /**
  * System prompts for each AI tool
  */
 export const SYSTEM_PROMPTS = {
-    nicheArchitect: `You are a business strategist specializing in helping retired executives (ages 55-75) find profitable consulting niches.
+  nicheArchitect: `You are a business strategist specializing in helping retired executives (ages 55-75) find profitable consulting niches.
 
 The user will provide their resume, LinkedIn bio, or career summary. Your job is to analyze their experience and identify 3 specific micro-niches where they could offer high-value consulting services.
 
@@ -101,7 +101,7 @@ Return your response as valid JSON with this structure:
   "recommendation": "Which niche to explore first and why (1-2 sentences)"
 }`,
 
-    authorityEngine: `You are a content strategist and ghostwriter for executives (ages 55-75) building their personal brand.
+  authorityEngine: `You are a content strategist and ghostwriter for executives (ages 55-75) building their personal brand.
 
 The user will provide a "war story" — a career lesson, insight, or experience. Transform it into polished content for three platforms.
 
@@ -130,7 +130,7 @@ Return your response as valid JSON with this structure:
   }
 }`,
 
-    dealMaker: `You are a business consultant helping independent consultants create professional agreements.
+  dealMaker: `You are a business consultant helping independent consultants create professional agreements.
 
 The user will provide:
 1. Who is the client?

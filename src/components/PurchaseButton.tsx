@@ -102,7 +102,7 @@ export function UserLink({ loginHref }: { loginHref: string }) {
     const { user } = useAuth();
 
     return (
-        <Link href={loginHref} className="text-navy-600 hover:text-navy-800 font-medium">
+        <Link href={user ? "/dashboard" : loginHref} className="text-navy-600 hover:text-navy-800 font-medium">
             {user ? "Dashboard" : "Log In"}
         </Link>
     );

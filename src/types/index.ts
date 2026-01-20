@@ -1,5 +1,5 @@
 /**
- * Type definitions for Executive AI Institute
+ * Type definitions for AI Courses for Adults
  */
 
 // User tiers

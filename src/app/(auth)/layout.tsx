@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
     return (
@@ -7,12 +8,16 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             {/* Header with logo */}
             <header className="py-6 px-4">
                 <div className="max-w-md mx-auto">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 bg-navy-800 rounded-lg flex items-center justify-center">
-                            <span className="text-gold-500 font-bold text-xl">E</span>
-                        </div>
+                    <Link href="/" className="flex items-center gap-3">
+                        <Image
+                            src="/images/icon-192.png"
+                            alt="AI Courses for Adults"
+                            width={40}
+                            height={40}
+                            className="w-10 h-10"
+                        />
                         <span className="text-navy-800 font-semibold text-lg">
-                            Executive AI Institute
+                            AI Courses for Adults
                         </span>
                     </Link>
                 </div>
@@ -26,7 +31,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             {/* Minimal footer */}
             <footer className="py-4 px-4 text-center">
                 <p className="text-sm text-navy-500">
-                    © {new Date().getFullYear()} Executive AI Institute. All rights
+                    © {new Date().getFullYear()} AI Courses for Adults. All rights
                     reserved.
                 </p>
             </footer>

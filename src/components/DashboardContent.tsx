@@ -20,9 +20,9 @@ export function DashboardContent() {
     // Tier display names
     const tierNames: Record<string, string> = {
         free: "Free Member",
-        sop: "SOP Bundle",
-        caio: "CAIO Certified",
-        launchpad: "Launchpad Pro",
+        sop: "AI SOPs Bundle",
+        caio: "AI Essentials",
+        launchpad: "AI Business Builder",
     };
 
     return (
@@ -40,7 +40,7 @@ export function DashboardContent() {
                     </div>
                     {tier === "free" && (
                         <Link
-                            href="/sop"
+                            href="/certification"
                             className="btn bg-gold-500 text-navy-900 hover:bg-gold-400"
                         >
                             Upgrade Now
@@ -83,8 +83,8 @@ export function DashboardContent() {
                             <p className="text-navy-600 mb-4">
                                 You haven&apos;t enrolled in any courses yet.
                             </p>
-                            <Link href="/sop" className="btn btn-primary">
-                                Get Started with AI SOPs
+                            <Link href="/certification" className="btn btn-primary">
+                                Get Started with AI Essentials
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                         </div>
@@ -93,22 +93,22 @@ export function DashboardContent() {
                             {/* CAIO Course Card */}
                             {hasAccess("caio") && (
                                 <CourseCard
-                                    title="Chief AI Officer (CAIO) Certification"
+                                    title="AI Essentials Bundle"
                                     progress={0}
                                     lessons={11}
                                     duration="4-6 weeks"
-                                    href="/dashboard/courses/caio"
+                                    href="/dashboard/courses/essentials"
                                 />
                             )}
 
                             {/* Launchpad Course Card */}
                             {hasAccess("launchpad") && (
                                 <CourseCard
-                                    title="Wisdom Consultant Launchpad"
+                                    title="AI Business Builder"
                                     progress={0}
                                     lessons={13}
                                     duration="4-6 weeks"
-                                    href="/dashboard/courses/launchpad"
+                                    href="/dashboard/courses/advanced"
                                 />
                             )}
                         </div>

@@ -3,10 +3,12 @@
 // Force dynamic rendering - this page uses auth context
 export const dynamic = "force-dynamic";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useUser } from "@/contexts";
+import { useUser, useAuth } from "@/contexts";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import {
     ArrowLeft,
     ArrowRight,
@@ -62,11 +64,54 @@ export default function CourseDetailPage() {
     const params = useParams();
     const courseId = params.courseId as string;
     const { hasAccess } = useUser();
+    const { user } = useAuth();
 
     const [completedLessons, setCompletedLessons] = useState<string[]>([]);
     const [currentLesson, setCurrentLesson] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const course = courseData[courseId];
+
+    // Load progress from Firestore
+    useEffect(() => {
+        const loadProgress = async () => {
+            if (!user || !db || !courseId) {
+                setIsLoading(false);
+                return;
+            }
+
+            try {
+                const progressRef = doc(db, "users", user.uid, "progress", courseId);
+                const progressDoc = await getDoc(progressRef);
+
+                if (progressDoc.exists()) {
+                    const data = progressDoc.data();
+                    setCompletedLessons(data.completedLessons || []);
+                }
+            } catch (error) {
+                console.error("Failed to load progress:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadProgress();
+    }, [user, courseId]);
+
+    // Save progress to Firestore
+    const saveProgress = useCallback(async (lessons: string[]) => {
+        if (!user || !db || !courseId) return;
+
+        try {
+            const progressRef = doc(db, "users", user.uid, "progress", courseId);
+            await setDoc(progressRef, {
+                completedLessons: lessons,
+                lastUpdated: new Date(),
+            }, { merge: true });
+        } catch (error) {
+            console.error("Failed to save progress:", error);
+        }
+    }, [user, courseId]);
 
     if (!course) {
         return (
@@ -87,7 +132,7 @@ export default function CourseDetailPage() {
                 </div>
                 <h1 className="text-h1 text-navy-800 mb-4">{course.title}</h1>
                 <p className="text-navy-600 mb-8">
-                    This course requires the {course.tier === "caio" ? "AI Essentials" : "Complete Mastery"} plan.
+                    This course requires the {course.tier === "caio" ? "AI Essentials Bundle" : "AI Business Builder"} plan.
                 </p>
                 <Link
                     href={course.tier === "caio" ? "/certification" : "/launchpad"}
@@ -101,11 +146,12 @@ export default function CourseDetailPage() {
     }
 
     const toggleComplete = (lessonId: string) => {
-        setCompletedLessons((prev) =>
-            prev.includes(lessonId)
-                ? prev.filter((id) => id !== lessonId)
-                : [...prev, lessonId]
-        );
+        const newCompleted = completedLessons.includes(lessonId)
+            ? completedLessons.filter((id) => id !== lessonId)
+            : [...completedLessons, lessonId];
+
+        setCompletedLessons(newCompleted);
+        saveProgress(newCompleted);  // Persist to Firestore
     };
 
     const progress = (completedLessons.length / course.lessons.length) * 100;

@@ -33,11 +33,11 @@ export function FreeThankYouContent() {
                     </div>
 
                     <h1 className="text-display-md text-navy-800 mb-4">
-                        You&apos;re In! Check Your Email
+                        You&apos;re In! 🎉
                     </h1>
                     <p className="text-navy-600 mb-8">
-                        I just sent you the AI Quickstart training. It should arrive in the
-                        next few minutes. While you wait, here&apos;s what to do next...
+                        Your AI Quickstart training is ready! Here&apos;s how to get started
+                        right away...
                     </p>
 
                     {/* Next Steps */}
@@ -50,10 +50,10 @@ export function FreeThankYouContent() {
                                     <span className="text-gold-600 font-bold">1</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-navy-800">Check your inbox</h3>
+                                    <h3 className="font-semibold text-navy-800">Watch the 5-minute video</h3>
                                     <p className="text-navy-600 text-sm">
-                                        Look for an email from AI Courses for Adults with the subject
-                                        &ldquo;Your AI Quickstart is ready!&rdquo;
+                                        Follow along as I show you exactly how to start your first
+                                        AI conversation.
                                     </p>
                                 </div>
                             </div>
@@ -98,13 +98,6 @@ export function FreeThankYouContent() {
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
-
-                    {/* Spam folder note */}
-                    <p className="text-sm text-navy-500 mt-8">
-                        Can&apos;t find the email? Check your spam or promotions folder.
-                        Add hello@aicoursesforadults.com to your contacts to make sure you
-                        receive future emails.
-                    </p>
                 </div>
             </main>
         </div>

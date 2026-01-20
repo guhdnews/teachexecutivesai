@@ -51,6 +51,36 @@ const actionCodeSettings = {
     handleCodeInApp: true,
 };
 
+// Helper function to create session cookie after successful auth
+async function createSessionCookie(user: User): Promise<void> {
+    try {
+        const idToken = await user.getIdToken();
+        const response = await fetch("/api/session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ idToken }),
+        });
+
+        if (!response.ok) {
+            const data = await response.json();
+            console.error("Session creation failed:", data.error);
+            // Don't throw - auth still worked, just session cookie failed
+        }
+    } catch (error) {
+        console.error("Failed to create session cookie:", error);
+        // Don't throw - auth still worked, just session cookie failed
+    }
+}
+
+// Helper function to clear session cookie
+async function clearSessionCookie(): Promise<void> {
+    try {
+        await fetch("/api/session", { method: "DELETE" });
+    } catch (error) {
+        console.error("Failed to clear session cookie:", error);
+    }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
@@ -97,7 +127,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             setError(null);
             setLoading(true);
             const auth = ensureAuth();
-            await signInWithEmailAndPassword(auth, email, password);
+            const result = await signInWithEmailAndPassword(auth, email, password);
+            await createSessionCookie(result.user);
             router.push("/dashboard");
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
@@ -119,6 +150,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             // Update display name
             await updateProfile(result.user, { displayName: name });
 
+            // Create session cookie for server-side auth
+            await createSessionCookie(result.user);
+
             // Note: Firestore user document will be created via UserContext
             router.push("/dashboard");
         } catch (err: unknown) {
@@ -135,6 +169,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             setError(null);
             const auth = ensureAuth();
+            // Clear session cookie first
+            await clearSessionCookie();
             await firebaseSignOut(auth);
             router.push("/");
         } catch (err: unknown) {
@@ -150,7 +186,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             setError(null);
             setLoading(true);
             const auth = ensureAuth();
-            await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            await createSessionCookie(result.user);
             router.push("/dashboard");
         } catch (err: unknown) {
             const message = getAuthErrorMessage(err);
@@ -186,7 +223,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const auth = ensureAuth();
 
             if (typeof window !== "undefined" && isSignInWithEmailLink(auth, window.location.href)) {
-                await signInWithEmailLink(auth, email, window.location.href);
+                const result = await signInWithEmailLink(auth, email, window.location.href);
+                await createSessionCookie(result.user);
                 window.localStorage.removeItem("emailForSignIn");
                 router.push("/dashboard");
             }

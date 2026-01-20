@@ -21,8 +21,8 @@ export function CheckoutSuccessContent() {
                 </p>
 
                 <p className="text-sm text-navy-500 mb-8">
-                    A confirmation email has been sent to your inbox with your receipt
-                    and access instructions.
+                    Your receipt is available in Stripe. Click below to access your courses
+                    and start your AI journey!
                 </p>
 
                 <Link href="/dashboard" className="btn btn-primary w-full text-lg">

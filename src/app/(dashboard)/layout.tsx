@@ -2,6 +2,7 @@
 
 import { ReactNode, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth, useUser } from "@/contexts";
 import {
@@ -64,9 +65,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 {/* Logo */}
                 <div className="p-6 border-b border-navy-700">
                     <Link href="/dashboard" className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
-                            <span className="text-navy-900 font-bold text-xl">A</span>
-                        </div>
+                        <Image
+                            src="/images/icon-192.png"
+                            alt="AI Courses for Adults"
+                            width={40}
+                            height={40}
+                            className="w-10 h-10"
+                        />
                         <span className="font-semibold text-lg">AI Courses for Adults</span>
                     </Link>
                 </div>
@@ -138,9 +143,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                         </button>
 
                         <Link href="/dashboard" className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-navy-800 rounded-lg flex items-center justify-center">
-                                <span className="text-gold-500 font-bold text-sm">A</span>
-                            </div>
+                            <Image
+                                src="/images/icon-192.png"
+                                alt="AI Courses for Adults"
+                                width={32}
+                                height={32}
+                                className="w-8 h-8"
+                            />
                         </Link>
 
                         {/* User menu button */}

@@ -62,7 +62,7 @@ export default function RefundPage() {
 
                     <h2>What&apos;s Covered</h2>
                     <ul>
-                        <li>All course purchases (AI Essentials, Complete Mastery)</li>
+                        <li>All course purchases (AI Essentials Bundle, AI Business Builder)</li>
                         <li>One-time payment plans</li>
                         <li>First payment of subscription plans</li>
                     </ul>

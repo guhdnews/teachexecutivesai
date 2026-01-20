@@ -43,7 +43,7 @@ export function ToolsContent() {
             <div className="mb-8">
                 <h1 className="text-h1 text-navy-800 mb-2">AI Tools</h1>
                 <p className="text-navy-600">
-                    Powerful AI assistants to help you build your consulting business
+                    Powerful AI assistants to help you apply what you've learned
                 </p>
             </div>
 

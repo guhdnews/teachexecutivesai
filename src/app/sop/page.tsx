@@ -1,14 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-import {
-    CheckCircle,
-    FileText,
-    Zap,
-    Gift,
-} from "lucide-react";
-import { PurchaseButton, UserLink } from "@/components/PurchaseButton";
-import { SOPOrderBump } from "@/components/SOPOrderBump";
+import { CheckCircle } from "lucide-react";
+import { UserLink } from "@/components/PurchaseButton";
+import { SOPCheckoutSection } from "@/components/SOPCheckoutSection";
 
 export const metadata: Metadata = {
     title: "AI SOPs & Prompt Templates ($37) | AI Courses for Adults",
@@ -100,25 +95,8 @@ export default function SOPPage() {
                             </div>
                         </div>
 
-                        {/* Order Bump */}
-                        <SOPOrderBump />
-
-                        {/* CTA */}
-                        <div className="card bg-navy-800 text-white text-center">
-                            <h2 className="text-h2 mb-4">Get Started Now</h2>
-                            <p className="text-3xl font-bold text-gold-400 mb-6">$37</p>
-
-                            <PurchaseButton
-                                tier="sop"
-                                priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_SOP}
-                                price="$37"
-                                label="Get Instant Access"
-                            />
-
-                            <p className="text-sm text-navy-300 mt-4">
-                                Instant download • 30-day guarantee
-                            </p>
-                        </div>
+                        {/* Order Bump + CTA (Connected Component) */}
+                        <SOPCheckoutSection priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_SOP} />
                     </div>
                 </div>
             </section>

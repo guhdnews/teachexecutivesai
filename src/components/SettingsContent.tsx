@@ -139,6 +139,13 @@ export function SettingsContent() {
                 deletedAt: serverTimestamp(),
             });
 
+            // Clear session cookie first
+            try {
+                await fetch("/api/session", { method: "DELETE" });
+            } catch (e) {
+                console.error("Failed to clear session:", e);
+            }
+
             // Sign out
             await auth.signOut();
 
@@ -324,9 +331,9 @@ export function SettingsContent() {
                                 <p className="text-navy-600">
                                     <span className="font-semibold">Current Plan:</span>{" "}
                                     {profile?.tier === "launchpad"
-                                        ? "Wisdom Consultant Launchpad"
+                                        ? "AI Business Builder"
                                         : profile?.tier === "caio"
-                                            ? "CAIO Certification"
+                                            ? "AI Essentials Bundle"
                                             : profile?.tier === "sop"
                                                 ? "AI SOPs Bundle"
                                                 : "Free Member"}

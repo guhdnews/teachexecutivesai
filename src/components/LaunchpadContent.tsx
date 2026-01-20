@@ -115,7 +115,7 @@ export function LaunchpadContent() {
                             AI Courses for Adults
                         </span>
                     </Link>
-                    <Link href="/login" className="text-navy-600 hover:text-navy-800 font-medium">
+                    <Link href={user ? "/dashboard" : "/login"} className="text-navy-600 hover:text-navy-800 font-medium">
                         {user ? "Dashboard" : "Log In"}
                     </Link>
                 </div>

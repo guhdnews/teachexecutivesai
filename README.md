@@ -1,4 +1,4 @@
-# AI for Boomers
+# AI Courses for Adults
 
 AI training platform designed for adults 55 and older. Learn to use ChatGPT, stay safe online, and embrace AI — all at your own pace.
 
